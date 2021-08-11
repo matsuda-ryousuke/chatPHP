@@ -1,24 +1,22 @@
 <?php
-require 'config/config.php';
 require 'config/database.php';
 
 session_start();
-var_dump($_SESSION['id']);
 // $thread_flag=0;登録フォーム 1;確認 2;完了
 $thread_flag = 0;
+
+// 確認ボタンを押している： 確認画面へ
 if (!empty($_POST['btn_confirm'])) {
     $thread_flag = 1;
+// 登録ボタンを押している： 完了画面へ
 } elseif (!empty($_POST['btn_submit'])) {
     $thread_flag = 2;
 }
-
-
 
 // 確認ページでの処理
 if ($thread_flag === 1) {
     $title = $_POST['title'];
     $mail = $_POST['mail'];
-    //$pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
     $pass = $_POST['pass'];
 
     // DB接続
@@ -26,27 +24,27 @@ if ($thread_flag === 1) {
 
     // ログインユーザーのメールアドレスと、入力メールアドレスをチェック
     if ($mail === $_SESSION['mail']) {
-        //フォームに入力されたmailがすでに登録されていないかチェック
         $sql = "SELECT * FROM users WHERE mail = :mail";
         $stmt = $dbh->prepare($sql);
         $stmt->bindValue(':mail', $mail);
         $stmt->execute();
         $member = $stmt->fetch();
-    } else {
-        $msg = 'メールアドレスが間違っています。';
-        $link = '<a href="index.php">戻る</a>';
-    }
 
-    //指定したハッシュがパスワードにマッチしているかチェック
-    if (password_verify($pass, $member['pass'])) {
-        echo $title;
-        $msg = 'このスレッドを作成します';
-        $link = '<a href="register_thread.php">登録</a><a href="index.php">キャンセル</a>';
+        // パスワードのチェック
+        if (password_verify($pass, $member['pass'])) {
+            echo $title;
+            $msg = 'このスレッドを作成します';
+            $link = '<a href="thread_create.php">登録</a><a href="index.php">キャンセル</a>';
+    
+        // パスワード、メールアドレスのミスがあれば、indexにリダイレクト
+        } else {
+            $_SESSION['error'] = "メールアドレスもしくはパスワードがが間違っています。";
+            header('Location: ./index.php');
+        }
     } else {
-        $msg = 'メールアドレスもしくはパスワードが間違っています。';
-        $link = '<a href="index.php">戻る</a>';
+        $_SESSION['error'] = "メールアドレスもしくはパスワードがが間違っています。";
+        header('Location: ./index.php');
     }
-
 
     // 送信完了ページの処理
 } elseif ($thread_flag === 2) {
@@ -57,6 +55,7 @@ if ($thread_flag === 1) {
     // DBアクセス
     $dbh = database_access();
 
+    // threadsテーブルにデータを登録
     $sql = "insert into threads (title, user_id) values (:title, :user_id)";
     $stmt = $dbh->prepare($sql);
     $stmt->bindValue(':title', $title);
@@ -95,6 +94,7 @@ if ($thread_flag === 1) {
             <p><?php echo $_POST['mail']; ?>
             </p>
         </div>
+        <p>このスレッドを作成します。</p>
         <input type="submit" name="btn_back" value="戻る">
         <input type="submit" name="btn_submit" value="送信">
         <input type="hidden" name="title"
