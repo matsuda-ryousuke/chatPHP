@@ -1,0 +1,9 @@
+index.php
+GET=>スレッドの一覧、スレッド作成画面へのリンク、ログアウトボタンなど
+POST=>スレッド検索結果を表示
+
+thread_create.php
+スレッドの作成、確認、完了まで
+
+thread_content.php?thread_id=1
+スレッドの内容（コメント一覧表示）

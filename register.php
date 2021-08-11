@@ -1,5 +1,4 @@
 <?php
-require 'config/config.php';
 require 'config/database.php';
 
 //フォームからの値をそれぞれ変数に代入
@@ -10,7 +9,7 @@ $pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
 // DB接続
 $dbh = database_access();
 
-//フォームに入力されたmailがすでに登録されていないかチェック
+// フォームに入力されたmailがすでに登録されていないかチェック
 $sql = "SELECT * FROM users WHERE mail = :mail";
 $stmt = $dbh->prepare($sql);
 $stmt->bindValue(':mail', $mail);

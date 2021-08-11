@@ -1,7 +1,11 @@
 <?php
+
 require "config/access_control.php";
+require "config/database.php";
+
 session_start();
 
+// エラー、登録完了ステートメントがあるならば、変数に登録
 if (isset($_SESSION['error'])) {
     $error = $_SESSION['error'];
     unset($_SESSION["error"]);
@@ -11,17 +15,29 @@ if (isset($_SESSION['success'])) {
     unset($_SESSION["success"]);
 }
 
-
-$id = $_SESSION['user_id'];
+// セッションのユーザー情報を登録
+$user_id = $_SESSION['user_id'];
 $user_name = $_SESSION['user_name'];
 $mail = $_SESSION['mail'];
 
 // ログインしていない場合、ログインフォームへ遷移
 access_control();
 
-$msg = 'こんにちは' . htmlspecialchars($user_name, \ENT_QUOTES, 'UTF-8') . 'さん';
-$link = '<a href="logout.php">ログアウト</a>';
-var_dump($_SESSION['id']);
+
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    // DB接続
+    $dbh = database_access();
+
+    // 全スレッドを取得
+    $sql = "SELECT * FROM threads";
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+    $threads = $stmt->fetch();
+
+    $msg = 'こんにちは' . htmlspecialchars($user_name, \ENT_QUOTES, 'UTF-8') . 'さん';
+    $link = '<a href="logout.php">ログアウト</a>';
+}
+
 
 ?>
 
@@ -45,10 +61,27 @@ var_dump($_SESSION['id']);
     }
     ?>
 
+    <?php foreach ($stmt as $row) : ?>
+    <div class="thread" data-id="<?php echo $row['thread_id'];
+ ?>">
+        <div class="thread_title">
+            <?php echo $row['title']; ?>
+        </div>
+        <div class="thread_user">
+            <?php echo $row['user_id']; ?>
+        </div>
+
+    </div>
+    <?php endforeach; ?>
+
+
     <h1><?php echo $msg; ?>
     </h1>
     <?php echo $link; ?>
-    <p><a href="thread.php">スレッド作成</a></p>
+    <p><a href="thread_create.php">スレッド作成</a></p>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="./js/script.js"></script>
+
 </body>
 
 </html>

@@ -1,4 +1,5 @@
 <?php
+require "config.php";
 
 function database_access()
 {
