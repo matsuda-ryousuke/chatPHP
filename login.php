@@ -1,13 +1,12 @@
 <?php
-require 'config.php';
+require 'config/config.php';
+require 'config/database.php';
 
 session_start();
 $mail = $_POST['mail'];
-try {
-    $dbh = new PDO(DSN, DB_USER, DB_PASS);
-} catch (PDOException $e) {
-    $msg = $e->getMessage();
-}
+// DB接続
+$dbh = database_access();
+
 
 $sql = "SELECT * FROM users WHERE mail = :mail";
 $stmt = $dbh->prepare($sql);
@@ -19,17 +18,16 @@ if (password_verify($_POST['pass'], $member['pass'])) {
     // セッションハイジャック対策
     session_regenerate_id();
     $_SESSION['id'] = session_id();
-    
-    //DBのユーザー情報をセッションに保存
-    $_SESSION['name'] = $member['name'];
-    $msg = 'ログインしました。';
-    $link = '<a href="index.php">ホーム</a>';
-} else {
-    $msg = 'メールアドレスもしくはパスワードが間違っています。';
-    $link = '<a href="login_form.php">戻る</a>';
-}
-?>
 
-<h1><?php echo $msg; ?>
-</h1>
-<?php echo $link;
+    // DBのユーザー情報をセッションに保存
+    $_SESSION['user_id'] = $member['user_id'];
+    $_SESSION['user_name'] = $member['user_name'];
+    $_SESSION['mail'] = $member['mail'];
+
+
+    $msg = 'ログインしました。';
+    header('Location: ./index.php');
+} else {
+    $_SESSION['error'] = "メールアドレスもしくはパスワードが間違っています。";
+    header('Location: ./login_form.php');
+}

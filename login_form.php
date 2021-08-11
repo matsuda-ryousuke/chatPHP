@@ -1,4 +1,16 @@
+<?php
+session_start();
+if (isset($_SESSION['error'])) {
+    $error = $_SESSION['error'];
+    unset($_SESSION["error"]);
+}
+?>
+
+
 <h1>ログインページ</h1>
+<?php if (isset($error)) {
+    echo $error;
+}?>
 <form action="login.php" method="post">
     <div>
         <label>メールアドレス：<label>

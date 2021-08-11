@@ -13,7 +13,7 @@
     <form action="register.php" method="post">
         <div>
             <label>名前：<label>
-                    <input type="text" name="name" required>
+                    <input type="text" name="user_name" required>
         </div>
         <div>
             <label>メールアドレス：<label>
