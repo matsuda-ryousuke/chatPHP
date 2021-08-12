@@ -1,8 +1,8 @@
-<?php
-require 'config/database.php';
+<?php include(dirname(__FILE__).'/assets/_inc/header.php'); ?>
 
-session_start();
-var_dump($_SESSION['id']);
+
+<?php
+
 // $comment_flag=0;登録フォーム 1;確認 2;完了
 $comment_flag = 0;
 if (!empty($_POST['btn_confirm'])) {
@@ -70,7 +70,6 @@ if ($comment_flag === 1) {
 
 
 
-<?php include(dirname(__FILE__).'/assets/_inc/header.php'); ?>
 
     <?php if ($comment_flag === 1): ?>
     <form method="post" action="">
