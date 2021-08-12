@@ -1,3 +1,10 @@
+<?php
+require "config/access_control.php";
+// ログインしていない場合、ログインフォームへ遷移
+access_control();
+?>
+
+
 <?php include(dirname(__FILE__).'/assets/_inc/header.php'); ?>
 
 <?php
@@ -75,7 +82,27 @@ if ($thread_flag === 1) {
                     <input type="text" name="title" required>
         </div>
         <input type="submit" name="btn_confirm" value="新規登録">
+        <div id="overlay" class="overlay"></div>
+        <div class="form-window modal-window" data-id="modal-form">
+            <p class="modal-secttl">スレッド作成</p>
+            <div>
+                <label>スレッドタイトル</label>
+            </div>
+            <div>
+                <p class="modal-form-item" id="form_title"></p>
+            </div>
+            <button type="button" class="js-modal-close" id="close">
+                Close
+            </button>
+            <button type="button" class="js-modal-open-form" id="submit-btn">送信</button>
+        </div>
     </form>
+
+
+    <button type="button" class="send js-modal-open btn btn-warning btn-lg btn-block" id="form_btn"
+        data-id="form">
+        送信
+    </button>
 
     <?php endif; ?>
 

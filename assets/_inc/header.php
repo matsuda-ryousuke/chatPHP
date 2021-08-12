@@ -1,23 +1,38 @@
 <?php
 
-require "config/access_control.php";
 require "config/database.php";
-
 session_start();
 
-// ログインしていない場合、ログインフォームへ遷移
-access_control();
+// ログイン時の挙動
+if (isset($_SESSION["login_id"])) {
+  $link = '<a href="logout.php">ログアウト</a>';
+} else {
+  $link = '<a href="login_form.php">ログイン</a>';
+
+  // セッションIDが全て付与されていない場合、guest_id を付与
+  if (!isset($_SESSION["guest_id"])) {
+    // セッションハイジャック対策
+    session_regenerate_id();
+    // ゲストユーザー用のセッションID
+    $_SESSION["guest_id"] = session_id();
+
+    $_SESSION["user_id"] = 1;
+    $_SESSION["user_name"] = "ゲスト";
+    $_SESSION["status"] = 0;
+
+    $link = '<a href="login_form.php">ログイン</a>';
+  }
+}
 
 // エラー、登録完了ステートメントがあるならば、変数に登録
-if (isset($_SESSION['error'])) {
-    $error = $_SESSION['error'];
-    unset($_SESSION["error"]);
+if (isset($_SESSION["error"])) {
+  $error = $_SESSION["error"];
+  unset($_SESSION["error"]);
 }
-if (isset($_SESSION['success'])) {
-    $success = $_SESSION['success'];
-    unset($_SESSION["success"]);
+if (isset($_SESSION["success"])) {
+  $success = $_SESSION["success"];
+  unset($_SESSION["success"]);
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -29,10 +44,16 @@ if (isset($_SESSION['success'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
 </head>
 
 <body>
     header
 
-    <?php if (isset($success)) { echo $success; } ?>
-    <?php if (isset($error)) { echo $error; } ?>
+    <?php if (isset($success)) {
+      echo $success;
+    } ?>
+    <?php if (isset($error)) {
+      echo $error;
+    } ?>

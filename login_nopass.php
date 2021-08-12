@@ -6,7 +6,7 @@ session_start();
 // DB接続
 $dbh = database_access();
 
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION['login_id'])) {
     $_SESSION['error'] = "既にログインしています。";
     header('Location: ./index.php');
 }
@@ -23,7 +23,7 @@ $member = $stmt->fetch();
 
 // セッションハイジャック対策
 session_regenerate_id();
-$_SESSION['id'] = session_id();
+$_SESSION['login_id'] = session_id();
 
 // ゲストユーザー情報をセッションに保存
 $_SESSION['user_id'] = $member['user_id'];

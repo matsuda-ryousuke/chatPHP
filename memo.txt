@@ -9,3 +9,15 @@ thread_content.php?thread_id=1
 スレッドの内容（コメント一覧表示）
 
 ユーザーの権限
+
+
+$_SESSION['login_id'] が、ログインした場合のセッションＩＤ
+$_SESSION['guest_id'] が、ログインしていない場合のセッションＩＤ
+
+名前の変更。
+ログインしている場合、書き込み時、スレたて時に名前を変更することができる
+ログインしていない場合、名前変更フォームがdisabled
+
+やることリスト
+sql, commentテーブルのuser_id => user_nameに変更
+comment_create.php/21, user_nameに

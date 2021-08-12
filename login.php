@@ -19,7 +19,7 @@ $member = $stmt->fetch();
 if (!$member == null && password_verify($_POST['pass'], $member['pass'])) {
     // セッションハイジャック対策
     session_regenerate_id();
-    $_SESSION['id'] = session_id();
+    $_SESSION['login_id'] = session_id();
 
     // DBのユーザー情報をセッションに保存
     $_SESSION['user_id'] = $member['user_id'];
