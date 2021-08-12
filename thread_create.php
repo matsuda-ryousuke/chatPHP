@@ -1,7 +1,14 @@
-<?php
-require 'config/database.php';
+<?php include(dirname(__FILE__).'/assets/_inc/header.php'); ?>
 
-session_start();
+<?php
+
+if($_SESSION['status'] == 0){
+    $_SESSION['error'] = "ゲストアカウントではこの機能はご利用いただけません。";
+    header('Location: ./index.php');
+}
+
+
+
 // $thread_flag=0;登録フォーム 1;確認 2;完了
 $thread_flag = 0;
 
@@ -13,40 +20,15 @@ if (!empty($_POST['btn_confirm'])) {
     $thread_flag = 2;
 }
 
+
+
+
+
 // 確認ページでの処理
 if ($thread_flag === 1) {
     $title = $_POST['title'];
-    $mail = $_POST['mail'];
-    $pass = $_POST['pass'];
 
-    // DB接続
-    $dbh = database_access();
-
-    // ログインユーザーのメールアドレスと、入力メールアドレスをチェック
-    if ($mail === $_SESSION['mail']) {
-        $sql = "SELECT * FROM users WHERE mail = :mail";
-        $stmt = $dbh->prepare($sql);
-        $stmt->bindValue(':mail', $mail);
-        $stmt->execute();
-        $member = $stmt->fetch();
-
-        // パスワードのチェック
-        if (password_verify($pass, $member['pass'])) {
-            echo $title;
-            $msg = 'このスレッドを作成します';
-            $link = '<a href="thread_create.php">登録</a><a href="index.php">キャンセル</a>';
-    
-        // パスワード、メールアドレスのミスがあれば、indexにリダイレクト
-        } else {
-            $_SESSION['error'] = "メールアドレスもしくはパスワードがが間違っています。";
-            header('Location: ./index.php');
-        }
-    } else {
-        $_SESSION['error'] = "メールアドレスもしくはパスワードがが間違っています。";
-        header('Location: ./index.php');
-    }
-
-    // 送信完了ページの処理
+// 送信完了ページの処理
 } elseif ($thread_flag === 2) {
     $title = $_POST['title'];
     // セッションから、ユーザー情報を取得
@@ -68,18 +50,12 @@ if ($thread_flag === 1) {
 
 ?>
 
-<?php include(dirname(__FILE__).'/assets/_inc/header.php'); ?>
 
     <?php if ($thread_flag === 1): ?>
     <form method="post" action="">
         <div class="element_wrap">
             <label>スレッドタイトル</label>
             <p><?php echo $_POST['title']; ?>
-            </p>
-        </div>
-        <div class="element_wrap">
-            <label>メールアドレス</label>
-            <p><?php echo $_POST['mail']; ?>
             </p>
         </div>
         <p>このスレッドを作成します。</p>
@@ -97,14 +73,6 @@ if ($thread_flag === 1) {
         <div>
             <label>タイトル：<label>
                     <input type="text" name="title" required>
-        </div>
-        <div>
-            <label>メールアドレス：<label>
-                    <input type="text" name="mail" required>
-        </div>
-        <div>
-            <label>パスワード：<label>
-                    <input type="password" name="pass" required>
         </div>
         <input type="submit" name="btn_confirm" value="新規登録">
     </form>
