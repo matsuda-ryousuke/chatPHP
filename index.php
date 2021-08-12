@@ -32,26 +32,21 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $sql = "SELECT * FROM threads";
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
-    $threads = $stmt->fetch();
 
-    $msg = 'こんにちは' . htmlspecialchars($user_name, \ENT_QUOTES, 'UTF-8') . 'さん';
+    // foreach($stmt as $row){
+    //     var_dump($row);
+    // }
+    // $threads = $stmt->fetch();
+
+    $msg = 'こんにちは ' . htmlspecialchars($user_name, \ENT_QUOTES, 'UTF-8') . 'さん';
     $link = '<a href="logout.php">ログアウト</a>';
 }
 
 
 ?>
 
-<!DOCTYPE html>
-<html lang="ja">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
+<?php include(dirname(__FILE__).'/assets/_inc/header.php'); ?>
     <?php if (isset($success)) {
     echo $success;
 }
@@ -62,8 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     ?>
 
     <?php foreach ($stmt as $row) : ?>
-    <div class="thread" data-id="<?php echo $row['thread_id'];
- ?>">
+    <div class="thread" data-id="<?php echo $row['thread_id']; ?>">
         <div class="thread_title">
             <?php echo $row['title']; ?>
         </div>
@@ -79,9 +73,5 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     </h1>
     <?php echo $link; ?>
     <p><a href="thread_create.php">スレッド作成</a></p>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="./js/script.js"></script>
 
-</body>
-
-</html>
+    <?php include(dirname(__FILE__).'/assets/_inc/footer.php'); ?>

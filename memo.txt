@@ -7,3 +7,5 @@ thread_create.php
 
 thread_content.php?thread_id=1
 スレッドの内容（コメント一覧表示）
+
+ユーザーの権限
