@@ -23,3 +23,4 @@ if (isset($_SESSION['error'])) {
     <input type="submit" value="ログイン">
 </form>
 <p>新規登録は<a href="signup.php">こちら</a></p>
+<p>簡単ログインは<a href="login_nopass.php">こちら</a></p>

@@ -15,20 +15,22 @@ $stmt = $dbh->prepare($sql);
 $stmt->bindValue(':mail', $mail);
 $stmt->execute();
 $member = $stmt->fetch();
-if ($member['mail'] === $mail) {
-    $msg = '同じメールアドレスが存在します。';
-    $link = '<a href="signup.php">戻る</a>';
-} else {
+
+if($member == null){
     //登録されていなければinsert
-    $sql = "INSERT INTO users(user_name, mail, pass) VALUES (:user_name, :mail, :pass)";
+    $sql = "INSERT INTO users(user_name, mail, pass, status) VALUES (:user_name, :mail, :pass, 1)";
     $stmt = $dbh->prepare($sql);
     $stmt->bindValue(':user_name', $user_name);
     $stmt->bindValue(':mail', $mail);
     $stmt->bindValue(':pass', $pass);
     $stmt->execute();
     $msg = '会員登録が完了しました';
-    $link = '<a href="login_form.php">ログインページ</a>';
+$link = '<a href="login_form.php">ログインページ</a>';
+} else {
+    $msg = '同じメールアドレスが存在します。';
+    $link = '<a href="signup.php">戻る</a>';
 }
+
 ?>
 
 <h1><?php echo $msg; ?>

@@ -24,7 +24,7 @@ if (!$member == null && password_verify($_POST['pass'], $member['pass'])) {
     // DBのユーザー情報をセッションに保存
     $_SESSION['user_id'] = $member['user_id'];
     $_SESSION['user_name'] = $member['user_name'];
-    $_SESSION['mail'] = $member['mail'];
+    $_SESSION['status'] = $member['status'];
 
 
     $msg = 'ログインしました。';
