@@ -21,3 +21,22 @@ $_SESSION['guest_id'] が、ログインしていない場合のセッション�
 やることリスト
 sql, commentテーブルのuser_id => user_nameに変更
 comment_create.php/21, user_nameに
+
+コメント投稿時、コメント欄にカーソルある状態でエンターを推すと確認なしにコメント送信されてしまう
+トランザクション処理
+
+
+try {
+    $dbh->beginTransaction();
+
+
+
+    $dbh->commit();
+} catch (Exception $e) {
+    $dbh->rollBack();
+    echo "失敗しました。" . $e->getMessage();
+}
+
+08/14
+トランザクション
+ページネーション完了

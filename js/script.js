@@ -18,6 +18,17 @@ $(function () {
       form_user_name.html(user_name);
       form_title.html(title);
     }
+    if ($(this).attr("id") == "form_comment_btn") {
+      var form_user_name = $("#form_user_name");
+      var form_comment = $("#form_comment");
+      var user_name = $("#user_name").val();
+      var comment = $("#comment").val();
+      if (user_name == null) {
+        user_name = "ゲスト";
+      }
+      form_user_name.html(user_name);
+      form_comment.html(comment);
+    }
   });
 
   $(".js-modal-close, #overlay").click(function () {

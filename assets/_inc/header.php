@@ -1,8 +1,8 @@
 <?php
 
-require "config/database.php";
+require "config/function.php";
 session_start();
-var_dump($_SESSION);
+//var_dump($_SESSION);
 
 // ログイン時の挙動
 if (isset($_SESSION["login_id"])) {

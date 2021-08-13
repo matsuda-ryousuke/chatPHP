@@ -1,19 +1,28 @@
 <?php
-require "config/database.php";
+require "config/function.php";
 
 session_start();
 $mail = $_POST["mail"];
 // DB接続
 $dbh = database_access();
 
-// ログインフォームに入力されたメールアドレスと、同じものをDBから取得
-$sql = "SELECT * FROM users WHERE mail = :mail";
-$stmt = $dbh->prepare($sql);
-$stmt->bindValue(":mail", $mail);
-$stmt->execute();
+try {
+  $dbh->beginTransaction();
 
-// $member: 該当ユーザー
-$member = $stmt->fetch();
+  // ログインフォームに入力されたメールアドレスと、同じものをDBから取得
+  $sql = "SELECT * FROM users WHERE mail = :mail";
+  $stmt = $dbh->prepare($sql);
+  $stmt->bindValue(":mail", $mail);
+  $stmt->execute();
+
+  // $member: 該当ユーザー
+  $member = $stmt->fetch();
+
+  $dbh->commit();
+} catch (Exception $e) {
+  $dbh->rollBack();
+  echo "失敗しました。" . $e->getMessage();
+}
 
 //指定したハッシュがパスワードにマッチしているかチェック
 if (!$member == null && password_verify($_POST["pass"], $member["pass"])) {

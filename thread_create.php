@@ -20,12 +20,21 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
   // DBアクセス
   $dbh = database_access();
 
-  // threadsテーブルにデータを登録
-  $sql = "insert into threads (title, user_id) values (:title, :user_id)";
-  $stmt = $dbh->prepare($sql);
-  $stmt->bindValue(":title", $title);
-  $stmt->bindValue(":user_id", $user_id);
-  $stmt->execute();
+  try {
+    $dbh->beginTransaction();
+
+    // threadsテーブルにデータを登録
+    $sql = "insert into threads (title, user_id) values (:title, :user_id)";
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindValue(":title", $title);
+    $stmt->bindValue(":user_id", $user_id);
+    $stmt->execute();
+
+    $dbh->commit();
+  } catch (Exception $e) {
+    $dbh->rollBack();
+    echo "失敗しました。" . $e->getMessage();
+  }
 
   $_SESSION["success"] = "スレッドの作成が完了しました。";
   header("Location: index.php");
