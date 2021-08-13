@@ -2,6 +2,7 @@
 
 require "config/database.php";
 session_start();
+var_dump($_SESSION);
 
 // ログイン時の挙動
 if (isset($_SESSION["login_id"])) {

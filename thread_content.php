@@ -57,12 +57,15 @@
 
 
 <form action="comment_create.php" method="post" name="thread_form">
+    <?php if ($status == 1): ?>
     <div>
         <label>名前：<label>
-                <?php if ($status == 1): ?>
-                <input type="text" name="user_name">
-                <?php endif; ?>
+                <input type="text" name="user_name" value="<?php echo $_SESSION[
+                  "user_name"
+                ]; ?>">
     </div>
+    <?php endif; ?>
+
     <div>
         <label>コメント：<label>
                 <input type="text" name="comment" required>
