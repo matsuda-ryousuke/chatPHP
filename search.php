@@ -18,6 +18,14 @@ $msg =
 
 // GETアクセス：全表示
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
+  // 検索欄を入力せずに検索した場合、GETアクセス
+  if ($_GET["search"] == null) {
+    header("Location: ./index.php");
+  }
+
+  $search = (string) htmlspecialchars($_GET["search"]);
+  var_dump($search);
+
   // DB接続
   $dbh = database_access();
 
@@ -25,12 +33,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $dbh->beginTransaction();
 
     // スレッドの数をカウント
-    $sql = "SELECT COUNT(*) FROM threads";
-    $stmt = $dbh->prepare($sql);
-    $stmt->execute();
+    $sql_count = "SELECT COUNT(*) FROM threads where title like :search";
+    $stmt_count = $dbh->prepare($sql_count);
+    $stmt_count->bindValue(":search", "%" . $search . "%", PDO::PARAM_STR);
+    $stmt_count->execute();
 
     // ページネーション処理の準備
-    $thread_count = $stmt->fetchColumn(0);
+    $thread_count = $stmt_count->fetchColumn(0);
     // thread件数
     // 最大ページ数
     $max_page = ceil($thread_count / THREAD_MAX);
@@ -46,8 +55,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     // 全スレッドを取得
     $sql =
-      "SELECT * FROM threads order by updated_at desc limit :start_thread, :thread_max";
+      "SELECT * FROM threads where title like :search order by updated_at desc limit :start_thread, :thread_max";
     $stmt = $dbh->prepare($sql);
+    $stmt->bindValue(":search", "%" . $search . "%", PDO::PARAM_STR);
     $stmt->bindValue(":start_thread", $start_thread, PDO::PARAM_INT);
     $stmt->bindValue(":thread_max", THREAD_MAX, PDO::PARAM_INT);
     $stmt->execute();
@@ -56,6 +66,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
   } catch (Exception $e) {
     $dbh->rollBack();
     echo "失敗しました。" . $e->getMessage();
+  }
+  if ($thread_count == 0) {
+    $_SESSION["error"] = $search . " を含むスレッドは見つかりませんでした";
+    header("Location: ./index.php");
   }
 }
 ?>
@@ -91,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 </div>
 <?php endforeach; ?>
 
-<?php thread_pagination($max_page, $now_page); ?>
+<?php search_pagination($max_page, $now_page, $search); ?>
 
 
 

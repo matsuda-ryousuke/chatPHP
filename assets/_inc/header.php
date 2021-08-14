@@ -50,7 +50,11 @@ if (isset($_SESSION["success"])) {
 </head>
 
 <body>
-    header
+
+    <form action="search.php" method="get">
+        <input type="text" name="search" id="search">
+        <button type="submit">送信</button>
+    </form>
 
     <?php if (isset($success)) {
       echo $success;

@@ -94,3 +94,22 @@ function thread_pagination($max_page, $now_page)
     }
   }
 }
+
+function search_pagination($max_page, $now_page, $search)
+{
+  for ($i = 1; $i <= $max_page; $i++) {
+    // 最大ページ数分リンクを作成
+    if ($i == $now_page) {
+      // 現在表示中のページ数の場合はリンクを貼らない
+      echo $now_page . "　";
+    } else {
+      echo '<a href="search.php?search=' .
+        $search .
+        "&page_id=" .
+        $i .
+        '")>' .
+        $i .
+        "</a>  ";
+    }
+  }
+}
