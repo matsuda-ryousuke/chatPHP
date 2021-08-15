@@ -2,7 +2,6 @@
 
 <?php if ($_POST["comment"]) {
   // POSTでコメントが送られている：コメント登録
-  var_dump($_POST);
 
   $comment = $_POST["comment"];
   $thread_id = $_SESSION["thread_id"];

@@ -65,51 +65,197 @@ function count_comment($thread_id, $dbh)
 
 function comment_pagination($max_page, $now_page, $thread_id)
 {
+  $pre_page = $now_page - 1;
+  $next_page = $now_page + 1;
+
+  echo '<div class="pager">
+  <ul class="pagination">
+      <li class="first"><a href="thread_content.php?id=' .
+    $thread_id .
+    '&page_id=1"><span>«</span></a></li>';
+  if ($now_page == 1) {
+    echo '<li class="pre"><a class="disable" href="thread_content.php?id=' .
+      $thread_id .
+      "&page_id=" .
+      $pre_page .
+      '"><span><</span>
+    </a></li>';
+  } else {
+    echo '<li class="pre"><a href="thread_content.php?id=' .
+      $thread_id .
+      "&page_id=" .
+      $pre_page .
+      '"><span><</span>
+    </a></li>';
+  }
+
   for ($i = 1; $i <= $max_page; $i++) {
     // 最大ページ数分リンクを作成
     if ($i == $now_page) {
       // 現在表示中のページ数の場合はリンクを貼らない
-      echo $now_page . "　";
-    } else {
-      echo '<a href="thread_content.php?id=' .
+      echo '<li><a href="thread_content.php?id=' .
         $thread_id .
         "&page_id=" .
         $i .
-        '")>' .
+        '"><span>' .
         $i .
-        "</a>  ";
+        "</span></a></li>  ";
+    } else {
+      echo '<li><a href="thread_content.php?id=' .
+        $thread_id .
+        "&page_id=" .
+        $i .
+        '"><span>' .
+        $i .
+        "</span></a></li>  ";
     }
   }
+
+  if ($now_page == $max_page) {
+    echo '<li class="next"><a class="disable" href="thread_content.php?id=' .
+      $thread_id .
+      "&page_id=" .
+      $next_page .
+      '"><span>></span></a></li>';
+  } else {
+    echo '<li class="next"><a href="thread_content.php?id=' .
+      $thread_id .
+      "&page_id=" .
+      $next_page .
+      '"><span>></span></a></li>';
+  }
+
+  echo '<li class="last"><a href="thread_content.php?id=' .
+    $thread_id .
+    "&page_id=" .
+    $max_page .
+    '"><span>»</span></a></li>
+  </ul>
+  </div>';
 }
 
 function thread_pagination($max_page, $now_page)
 {
+  $pre_page = $now_page - 1;
+  $next_page = $now_page + 1;
+
+  echo '<div class="pager">
+  <ul class="pagination">
+      <li class="first"><a href="index.php?page_id=1"><span>«</span></a></li>';
+  if ($now_page == 1) {
+    echo '<li class="pre"><a class="disable" href=".php?page_id=' .
+      $pre_page .
+      '"><span><</span>
+    </a></li>';
+  } else {
+    echo '<li class="pre"><a href="index.php?page_id=' .
+      $pre_page .
+      '"><span><</span>
+    </a></li>';
+  }
+
   for ($i = 1; $i <= $max_page; $i++) {
     // 最大ページ数分リンクを作成
     if ($i == $now_page) {
       // 現在表示中のページ数の場合はリンクを貼らない
-      echo $now_page . "　";
+      echo '<li><a href="index.php?page_id=' .
+        $i .
+        '"><span>' .
+        $i .
+        "</span></a></li>  ";
     } else {
-      echo '<a href="index.php?page_id=' . $i . '")>' . $i . "</a>  ";
+      echo '<li><a href="index.php?page_id=' .
+        $i .
+        '"><span>' .
+        $i .
+        "</span></a></li>  ";
     }
   }
+
+  if ($now_page == $max_page) {
+    echo '<li class="next"><a class="disable" href="index.php?page_id=' .
+      $next_page .
+      '"><span>></span></a></li>';
+  } else {
+    echo '<li class="next"><a href="index.php?page_id=' .
+      $next_page .
+      '"><span>></span></a></li>';
+  }
+
+  echo '<li class="last"><a href="index.php?page_id=' .
+    $max_page .
+    '"><span>»</span></a></li>
+  </ul>
+  </div>';
 }
 
 function search_pagination($max_page, $now_page, $search)
 {
+  $pre_page = $now_page - 1;
+  $next_page = $now_page + 1;
+
+  echo '<div class="pager">
+  <ul class="pagination">
+      <li class="first"><a href="search.php?search=' .
+    $search .
+    '&page_id=1"><span>«</span></a></li>';
+  if ($now_page == 1) {
+    echo '<li class="pre"><a class="disable" href="search.php?search=' .
+      $search .
+      "&page_id=" .
+      $pre_page .
+      '"><span><</span>
+    </a></li>';
+  } else {
+    echo '<li class="pre"><a href="search.php?search=' .
+      $search .
+      "&page_id=" .
+      $pre_page .
+      '"><span><</span>
+    </a></li>';
+  }
+
   for ($i = 1; $i <= $max_page; $i++) {
     // 最大ページ数分リンクを作成
     if ($i == $now_page) {
       // 現在表示中のページ数の場合はリンクを貼らない
-      echo $now_page . "　";
-    } else {
-      echo '<a href="search.php?search=' .
+      echo '<li><a href="search.php?search=' .
         $search .
         "&page_id=" .
         $i .
-        '")>' .
+        '"><span>' .
         $i .
-        "</a>  ";
+        "</span></a></li>  ";
+    } else {
+      echo '<li><a href="search.php?search=' .
+        $search .
+        "&page_id=" .
+        $i .
+        '"><span>' .
+        $i .
+        "</span></a></li>  ";
     }
   }
+
+  if ($now_page == $max_page) {
+    echo '<li class="next"><a class="disable" href="search.php?search=' .
+      $search .
+      "&page_id=" .
+      $next_page .
+      '"><span>></span></a></li>';
+  } else {
+    echo '<li class="next"><a href="search.php?search=' .
+      $search .
+      "&page_id=" .
+      $next_page .
+      '"><span>></span></a></li>';
+  }
+
+  echo '<li class="last"><a href="search.php?search=' .
+    $search .
+    "&page_id=" .
+    $max_page .
+    '"><span>»</span></a></li>
+  </ul>
+  </div>';
 }

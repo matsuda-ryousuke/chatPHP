@@ -20,8 +20,6 @@ if (isset($_SESSION["login_id"])) {
     $_SESSION["user_id"] = 1;
     $_SESSION["user_name"] = "ゲスト";
     $_SESSION["status"] = 0;
-
-    $link = '<a href="login_form.php">ログイン</a>';
   }
 }
 
@@ -51,14 +49,35 @@ if (isset($_SESSION["success"])) {
 
 <body>
 
-    <form action="search.php" method="get">
-        <input type="text" name="search" id="search">
-        <button type="submit">送信</button>
-    </form>
+    <header class="header">
+        <a href="index.php">
+            <div class="header-logo">
+            </div>
+        </a>
 
-    <?php if (isset($success)) {
-      echo $success;
-    } ?>
-    <?php if (isset($error)) {
-      echo $error;
-    } ?>
+        <form action="search.php" method="get">
+            <input type="text" name="search" id="search">
+            <button type="submit">検索</button>
+        </form>
+        <?php echo $link; ?>
+    </header>
+
+    <section class="message">
+        <?php if (isset($success)): ?>
+        <div class="message-success">
+            <p>
+                <?php echo $success; ?>
+            </p>
+        </div>
+        <?php endif; ?>
+        <?php if (isset($error)): ?>
+        <div class="message-error">
+            <p>
+                <?php echo $error; ?>
+            </p>
+        </div>
+        <?php endif; ?>
+
+
+
+    </section>

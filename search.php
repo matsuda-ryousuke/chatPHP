@@ -24,7 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
   }
 
   $search = (string) htmlspecialchars($_GET["search"]);
-  var_dump($search);
 
   // DB接続
   $dbh = database_access();
@@ -76,7 +75,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 <h1><?php echo $msg; ?>
 </h1>
-<?php echo $link; ?>
 
 <?php if ($status >= 1): ?>
 <p><a href="thread_create.php">スレッド作成</a></p>
