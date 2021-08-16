@@ -1,10 +1,16 @@
 <?php
-session_start();
-$_SESSION = []; //セッションの中身をすべて削除
+/*=============================================
+  ログアウト処理用のページ
+============================================= */
+
+include dirname(__FILE__) . "/assets/_inc/process.php";
+//セッションの中身をすべて削除
+$_SESSION = [];
+//セッションを破壊
 session_destroy();
 
-//セッションを破壊
-?>
-
-<p>ログアウトしました。</p>
-<a href="index.php">ログインへ</a>
+// サクセス文登録用に、セッションを再開
+session_start();
+$_SESSION["success"] = "ログアウトしました。";
+// index.php にリダイレクト
+header("Location: ./index.php");

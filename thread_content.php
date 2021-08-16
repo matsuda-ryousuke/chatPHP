@@ -1,4 +1,10 @@
-<?php include dirname(__FILE__) . "/assets/_inc/header.php"; ?>
+<?php
+/*=============================================
+  スレッドの内容表示ページ
+  コメントの表示や、コメント入力フォームを表示
+============================================= */
+
+include dirname(__FILE__) . "/assets/_inc/header.php"; ?>
 
 <?php if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (isset($_GET["id"])) {
@@ -9,6 +15,8 @@
         $_SESSION["error"] = "エラーが発生しました。";
         header("Location: ./index.php");
     }
+
+    $user_id = $_SESSION["user_id"];
 
     // DB接続
     $dbh = database_access();
@@ -27,7 +35,7 @@
         // comment件数
         $comment_count = $thread["comment_count"];
         $title = $thread["title"];
-        $user_name = user_from_comment($thread["user_id"], $dbh);
+        $user_name = get_username_from_id($thread["user_id"], $dbh);
 
         // 最大ページ数
         $max_page = ceil($comment_count / COMMENT_MAX);
@@ -42,7 +50,7 @@
         } else {
             // page_id が1以下なら1に、max以上ならmaxに合わせる
 
-            $page_id = (int) $_GET["page_id"];
+            $page_id = (int) htmlspecialchars($_GET["page_id"]);
             $_SESSION["page_id"] = $page_id;
             if ($page_id < 1 || $page_id > $max_page) {
                 $_SESSION["error"] = "無効な値が入力されました。";
@@ -64,6 +72,19 @@
         $stmt_comment->bindValue(":comment_max", COMMENT_MAX, PDO::PARAM_INT);
         $stmt_comment->execute();
 
+        // すでにお気に入りされていないかチェック
+        $sql = "select * from favorites where user_id = :user_id and thread_id = :thread_id";
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindValue(":user_id", $user_id, PDO::PARAM_INT);
+        $stmt->bindValue(":thread_id", $thread_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $favorite = $stmt->fetch();
+
+        // されていなければお気に入り登録
+        if ($favorite != null) {
+            $favorite_flag = true;
+        }
+
         $dbh->commit();
     } catch (Exception $e) {
         $dbh->rollBack();
@@ -76,11 +97,16 @@
 <!-- threadの表示 -->
 <div class="comment-thread" data-id="<?php echo $thread_id; ?>">
     <div>
-        <p class="comment-thread-p"><span
-                class="comment-thread-title"><?php echo $title; ?></span><span>[<?php echo $user_name; ?>]
+        <p class="comment-thread-p"><span class="comment-thread-title"><?php echo $title; ?>
+
+            </span><span><span class="comment-thread-favo <?php if ($favorite_flag): ?>active<?php endif; ?>">
+                    ★</span>[<?php echo $user_name; ?>]
                 (<?php echo $comment_count; ?>コメント)</span></p>
     </div>
     <div class="comment-thread-user">
+
+    </div>
+    <div>
 
     </div>
 </div>

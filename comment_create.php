@@ -1,70 +1,73 @@
-<?php include dirname(__FILE__) . "/assets/_inc/header.php"; ?>
+<?php
+/*=============================================
+  コメント登録処理用のページ
+  処理が終わればリダイレクト
+============================================= */
 
-<?php if ($_POST["comment"]) {
-  // POSTでコメントが送られている：コメント登録
+include dirname(__FILE__) . "/assets/_inc/process.php";
 
-  $comment = $_POST["comment"];
-  $thread_id = $_SESSION["thread_id"];
+if ($_POST["comment"]) {
+    // POSTでコメントが送られている：コメント登録
 
-  // セッションから、ユーザー情報を取得
-  $user_id = $_SESSION["user_id"];
-  $status = $_SESSION["status"];
+    $comment = htmlspecialchars($_POST["comment"]);
+    $thread_id = $_SESSION["thread_id"];
 
-  // user_name がPOSTされている かつ ログインユーザーならばその値、なければゲスト
-  if (isset($_POST["user_name"]) && $status == 1) {
-    $user_name = $_POST["user_name"];
-  } else {
-    $user_name = "ゲスト";
-  }
+    // セッションから、ユーザー情報を取得
+    $user_id = $_SESSION["user_id"];
+    $status = $_SESSION["status"];
 
-  // DBアクセス
-  $dbh = database_access();
+    // user_name がPOSTされている かつ ログインユーザーならばその値、なければゲスト
+    if (isset($_POST["user_name"]) && $status == 1) {
+        $user_name = htmlspecialchars($_POST["user_name"]);
+    } else {
+        $user_name = "ゲスト";
+    }
 
-  try {
-    $dbh->beginTransaction();
+    // DBアクセス
+    $dbh = database_access();
 
-    // スレッドのコメント数を取得
-    $sql = "select comment_count from threads where thread_id = :thread_id";
-    $stmt = $dbh->prepare($sql);
-    $stmt->bindValue(":thread_id", $thread_id);
-    $stmt->execute();
-    $comment_id = $stmt->fetchColumn() + 1;
+    try {
+        $dbh->beginTransaction();
 
-    // commentsテーブルにデータを登録
-    $sql =
+        // スレッドのコメント数を取得
+        $sql = "select comment_count from threads where thread_id = :thread_id";
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindValue(":thread_id", $thread_id);
+        $stmt->execute();
+        $comment_id = $stmt->fetchColumn() + 1;
+
+        // commentsテーブルにデータを登録
+        $sql =
       "insert into comments (comment_id, thread_id, user_id, user_name, comment) values (:comment_id, :thread_id, :user_id, :user_name, :comment)";
-    $stmt = $dbh->prepare($sql);
-    $stmt->bindValue(":comment_id", $comment_id);
-    $stmt->bindValue(":thread_id", $thread_id);
-    $stmt->bindValue(":user_id", $user_id);
-    $stmt->bindValue(":user_name", $user_name);
-    $stmt->bindValue(":comment", $comment);
-    $stmt->execute();
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindValue(":comment_id", $comment_id);
+        $stmt->bindValue(":thread_id", $thread_id);
+        $stmt->bindValue(":user_id", $user_id);
+        $stmt->bindValue(":user_name", $user_name);
+        $stmt->bindValue(":comment", $comment);
+        $stmt->execute();
 
-    // スレッドのコメント数を更新
-    $sql =
+        // スレッドのコメント数を更新
+        $sql =
       "update threads set comment_count = :comment_id where thread_id = :thread_id";
-    $stmt = $dbh->prepare($sql);
-    $stmt->bindValue(":comment_id", $comment_id);
-    $stmt->bindValue(":thread_id", $thread_id);
-    $stmt->execute();
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindValue(":comment_id", $comment_id);
+        $stmt->bindValue(":thread_id", $thread_id);
+        $stmt->execute();
 
-    $dbh->commit();
-  } catch (Exception $e) {
-    $dbh->rollBack();
-    echo "失敗しました。" . $e->getMessage();
-  }
+        $dbh->commit();
+    } catch (Exception $e) {
+        $dbh->rollBack();
+        echo "失敗しました。" . $e->getMessage();
+    }
 
-  $_SESSION["success"] = "コメントの投稿が完了しました。";
+    $_SESSION["success"] = "コメントの投稿が完了しました。";
 
-  $status = $_SESSION["status"];
+    $status = $_SESSION["status"];
 
-  $uri = $_SERVER["HTTP_REFERER"];
-  header("Location: " . $uri);
+    $uri = $_SERVER["HTTP_REFERER"];
+    header("Location: " . $uri);
 } else {
-  $_SESSION["error"] = "エラーが発生しました。";
-  header("Location: ./index.php");
-} ?>
-
-
-<?php include dirname(__FILE__) . "/assets/_inc/footer.php"; ?>
+    $_SESSION["error"] = "エラーが発生しました。";
+    header("Location: ./index.php");
+}

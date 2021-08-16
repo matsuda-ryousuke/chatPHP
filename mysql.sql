@@ -43,6 +43,14 @@ create table if not exists comments (
     primary key (comment_id, thread_id)
     );
 
+drop table favorites;
+create table if not exists favorites (
+    user_id int,
+    thread_id int,
+    created_at datetime not null default CURRENT_TIMESTAMP,
+    updated_at datetime not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+    primary key (user_id, thread_id)
+);
 
 insert into threads (title, user_id) values ("thread1", 1);
 insert into threads (title, user_id) values ("thread2", 1);

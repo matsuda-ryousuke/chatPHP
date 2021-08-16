@@ -315,6 +315,16 @@ main {
   display: inline-block;
 }
 
+.comment-thread-favo {
+  color: #ccc;
+  font-size: 30px;
+}
+
+.comment-thread-favo.active {
+  color: #ff3333;
+  font-size: 30px;
+}
+
 .pager .pagination {
   text-align: center;
 }

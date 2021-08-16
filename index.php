@@ -1,10 +1,10 @@
 <?php
-// require "config/access_control.php";
-// // ログインしていない場合、ログインフォームへ遷移
-// access_control();
-?>
+/*=============================================
+  インデックスページ
+  スレッドの一覧を表示
+============================================= */
 
-<?php include dirname(__FILE__) . "/assets/_inc/header.php"; ?>
+include dirname(__FILE__) . "/assets/_inc/header.php"; ?>
 
 
 <?php
@@ -30,28 +30,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $stmt->execute();
 
         // ページネーション処理の準備
-        $thread_count = $stmt->fetchColumn(0);
-        // thread件数
-        // 最大ページ数
-        $max_page = ceil($thread_count / THREAD_MAX);
-        if ($max_page < 1) {
-            $max_page = 1;
-        }
-
-        if (!isset($_GET["page_id"])) {
-            // $_GET['page_id'] はURLに渡された現在のページ数
-      $now_page = 1; // 設定されてない場合は1ページ目にする
-        } else {
-            $now_page = $_GET["page_id"];
-        }
-
-        $start_thread = ($now_page - 1) * THREAD_MAX;
+        $count = $stmt->fetchColumn(0);
+        $arr = pagination_start($count, THREAD_MAX);
 
         // 全スレッドを取得
         $sql =
       "SELECT * FROM threads order by updated_at desc limit :start_thread, :thread_max";
         $stmt = $dbh->prepare($sql);
-        $stmt->bindValue(":start_thread", $start_thread, PDO::PARAM_INT);
+        $stmt->bindValue(":start_thread", $arr["start"], PDO::PARAM_INT);
         $stmt->bindValue(":thread_max", THREAD_MAX, PDO::PARAM_INT);
         $stmt->execute();
 
@@ -92,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 </p>
             </div>
             <div class="thread-user">
-                <p>スレ主： <?php echo user_from_comment(
+                <p>スレ主： <?php echo get_username_from_id(
                 $row["user_id"],
                 $dbh
             ); ?>
@@ -108,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 </div>
 <?php endforeach; ?>
 
-<?php thread_pagination($max_page, $now_page); ?>
+<?php thread_pagination($arr["max_page"], $arr["now_page"]); ?>
 
 
 

@@ -1,4 +1,10 @@
-<?php include dirname(__FILE__) . "/assets/_inc/header.php"; ?>
+<?php
+/*=============================================
+  スレッド作成ページ
+  GETならフォーム表示、POSTなら作成処理
+============================================= */
+
+include dirname(__FILE__) . "/assets/_inc/header.php"; ?>
 
 <?php
 require "config/access_control.php";
@@ -13,15 +19,15 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 } elseif ($_SERVER["REQUEST_METHOD"] == "POST") {
     // POSTアクセス時、スレッド作成
-    $title = $_POST["title"];
-    $comment = $_POST["comment"];
+    $title = htmlspecialchars($_POST["title"]);
+    $comment = htmlspecialchars($_POST["comment"]);
 
     // セッションから、ユーザー情報を取得
     $user_id = $_SESSION["user_id"];
 
     // user_name がPOSTされている かつ ログインユーザーならばその値、なければゲスト
     if (isset($_POST["user_name"]) && $status == 1) {
-        $user_name = $_POST["user_name"];
+        $user_name = htmlspecialchars($_POST["user_name"]);
     } else {
         $user_name = "ゲスト";
     }

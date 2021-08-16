@@ -1,17 +1,22 @@
 <?php
-session_start();
-if (isset($_SESSION["error"])) {
-  $error = $_SESSION["error"];
-  unset($_SESSION["error"]);
-}
+/*=============================================
+  ログインフォーム表示ページ
+============================================= */
 
-var_dump($_SESSION);
+include dirname(__FILE__) . "/assets/_inc/header.php";
+?>
+
+<?php
+if (isset($_SESSION["error"])) {
+    $error = $_SESSION["error"];
+    unset($_SESSION["error"]);
+}
 ?>
 
 
 <h1>ログインページ</h1>
 <?php if (isset($error)) {
-  echo $error;
+    echo $error;
 } ?>
 <form action="login.php" method="post">
     <div>
@@ -25,4 +30,5 @@ var_dump($_SESSION);
     <input type="submit" value="ログイン">
 </form>
 <p>新規登録は<a href="signup.php">こちら</a></p>
-<p>簡単ログインは<a href="login_nopass.php">こちら</a></p>
+
+<?php include dirname(__FILE__) . "/assets/_inc/footer.php";

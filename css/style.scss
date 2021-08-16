@@ -240,6 +240,16 @@ main {
     margin: 20px;
     display: inline-block;
   }
+
+  // いいね星マーク
+  &-thread-favo {
+    color: #ccc;
+    font-size: 30px;
+  }
+  &-thread-favo.active {
+    color: #ff3333;
+    font-size: 30px;
+  }
 }
 
 .pager .pagination {

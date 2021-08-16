@@ -1,9 +1,7 @@
 $(function () {
-  // thread をクリック時、その要素のthread_id を取得
-  $(".thread").click(function () {
-    console.log($(this).attr("data-id"));
-  });
-
+  /*======================================================
+    モーダルの挙動 
+   ======================================================*/
   var scrollPos;
   $(".js-modal-open").click(function () {
     scrollPos = $(window).scrollTop();
@@ -49,4 +47,28 @@ $(function () {
     $(window).scrollTop(scrollPos);
     $("#overlay, .modal-window").fadeOut();
   });
+
+  /*======================================================
+    お気に入りのajax
+   ======================================================*/
+
+  $(".comment-thread-favo").on("click", function () {
+    // ajaxでfavo登録
+    favorite_ajax();
+  });
+  function favorite_ajax() {
+    $.ajax({
+      type: "POST",
+      url: "favorite.php",
+
+      success: function () {
+        // ajaxに成功時、favoボタンのactiveと非active（色）をスイッチ
+        if ($(".comment-thread-favo").hasClass("active")) {
+          $(".comment-thread-favo").removeClass("active");
+        } else {
+          $(".comment-thread-favo").addClass("active");
+        }
+      },
+    });
+  }
 });
