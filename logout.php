@@ -3,7 +3,7 @@
   ログアウト処理用のページ
 ============================================= */
 
-include dirname(__FILE__) . "/assets/_inc/process.php";
+require_once dirname(__FILE__) . "/assets/_inc/process.php";
 //セッションの中身をすべて削除
 $_SESSION = [];
 //セッションを破壊

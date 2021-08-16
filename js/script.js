@@ -59,9 +59,10 @@ $(function () {
   function favorite_ajax() {
     $.ajax({
       type: "POST",
-      url: "favorite.php",
+      url: "process/favorite.php",
 
       success: function () {
+        console.log("ttt");
         // ajaxに成功時、favoボタンのactiveと非active（色）をスイッチ
         if ($(".comment-thread-favo").hasClass("active")) {
           $(".comment-thread-favo").removeClass("active");
