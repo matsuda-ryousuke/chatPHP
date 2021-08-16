@@ -23,17 +23,12 @@ create table if not exists threads (
     thread_id int not null primary key auto_increment, 
     title varchar(255), 
     user_id int, 
+    user_name varchar(255), 
     comment_count int default 0, 
     created_at datetime not null default CURRENT_TIMESTAMP,
     updated_at datetime not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
     );
 
-insert into threads (title, user_id) values ("thread1", 1);
-insert into threads (title, user_id) values ("thread2", 1);
-insert into threads (title, user_id) values ("thread3", 1);
-insert into threads (title, user_id) values ("thread4", 2);
-insert into threads (title, user_id) values ("thread5", 2);
-insert into threads (title, user_id) values ("thread6", 2);
 
 drop table comments;
 
@@ -47,3 +42,11 @@ create table if not exists comments (
     updated_at datetime not null default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
     primary key (comment_id, thread_id)
     );
+
+
+insert into threads (title, user_id) values ("thread1", 1);
+insert into threads (title, user_id) values ("thread2", 1);
+insert into threads (title, user_id) values ("thread3", 1);
+insert into threads (title, user_id) values ("thread4", 2);
+insert into threads (title, user_id) values ("thread5", 2);
+insert into threads (title, user_id) values ("thread6", 2);

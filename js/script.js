@@ -18,6 +18,19 @@ $(function () {
       form_user_name.html(user_name);
       form_title.html(title);
     }
+    if ($(this).attr("id") == "form_thread_btn") {
+      var form_user_name = $("#form_user_name");
+      var form_title = $("#form_title");
+
+      var user_name = $("#user_name").val();
+      var title = $("#title").val();
+
+      if (user_name == "") {
+        user_name = "ゲスト";
+      }
+      form_user_name.html(user_name);
+      form_title.html(title);
+    }
     if ($(this).attr("id") == "form_comment_btn") {
       var form_user_name = $("#form_user_name");
       var form_comment = $("#form_comment");
