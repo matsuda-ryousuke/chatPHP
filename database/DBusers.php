@@ -1,6 +1,9 @@
 <?php
 require_once "database.php";
 
+/**
+ * usersテーブルへの接続用クラス
+ */
 class DBUsers extends Database
 {
   public function __construct()

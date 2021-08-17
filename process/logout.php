@@ -1,9 +1,10 @@
 <?php
 /*=============================================
+  logout.php
   ログアウト処理用のページ
 ============================================= */
 
-require_once dirname(__FILE__) . "/assets/_inc/process.php";
+require_once dirname(__FILE__) . "/../assets/_inc/process.php";
 //セッションの中身をすべて削除
 $_SESSION = [];
 //セッションを破壊
@@ -13,4 +14,4 @@ session_destroy();
 session_start();
 $_SESSION["success"] = "ログアウトしました。";
 // index.php にリダイレクト
-header("Location: ./index.php");
+header("Location: ../index.php");

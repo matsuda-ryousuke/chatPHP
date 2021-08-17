@@ -14,7 +14,7 @@ function pagination_start($count, $max)
     // $_GET['page_id'] はURLに渡された現在のページ数
     $now_page = 1; // 設定されてない場合は1ページ目にする
   } else {
-    $now_page = (int) htmlspecialchars($_GET["page_id"]);
+    $now_page = (int) htmlspecialchars($_GET["page_id"], ENT_QUOTES, "UTF-8");
     if ($now_page < 1 || $now_page > $max_page) {
       $_SESSION["error"] = "無効な値が入力されました。";
       header("Location: ./index.php");

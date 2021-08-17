@@ -8,9 +8,12 @@ include dirname(__FILE__) . "/../assets/_inc/process.php";
 $dbuser = new DBUsers();
 
 //フォームからの値をそれぞれ変数に代入
-$user_name = htmlspecialchars($_POST["user_name"]);
-$mail = htmlspecialchars($_POST["mail"]);
-$pass = password_hash(htmlspecialchars($_POST["pass"]), PASSWORD_DEFAULT);
+$user_name = htmlspecialchars($_POST["user_name"], ENT_QUOTES, "UTF-8");
+$mail = htmlspecialchars($_POST["mail"], ENT_QUOTES, "UTF-8");
+$pass = password_hash(
+  htmlspecialchars($_POST["pass"], ENT_QUOTES, "UTF-8"),
+  PASSWORD_DEFAULT
+);
 
 // DB処理
 try {

@@ -1,10 +1,12 @@
 <?php
 
+/**
+ * DB接続用の親クラス
+ */
 class Database
 {
   public $dbh;
   // DBアクセス用の関数
-  //function database_access()
   public function database_access()
   {
     try {

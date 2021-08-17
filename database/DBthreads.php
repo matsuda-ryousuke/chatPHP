@@ -2,6 +2,9 @@
 
 require_once "database.php";
 
+/**
+ * threadsテーブルへの接続用クラス
+ */
 class DBThreads extends Database
 {
   public function __construct()
@@ -9,7 +12,7 @@ class DBThreads extends Database
     parent::database_access();
   }
 
-  // スレッドの数をカウント
+  // スレッドの総数をカウント
   public function count_threads()
   {
     $sql = "SELECT COUNT(*) FROM threads";
@@ -19,7 +22,7 @@ class DBThreads extends Database
     return !empty($count) ? $count : null;
   }
 
-  // スレッドの数をカウント（検索アリ）
+  // スレッドの総数をカウント（検索アリ）
   public function count_threads_search($search)
   {
     $sql_count = "SELECT COUNT(*) FROM threads where title like :search";
@@ -55,7 +58,7 @@ class DBThreads extends Database
     return $stmt;
   }
 
-  // スレッドIDからスレッドの内容を取
+  // スレッドIDからスレッドの内容を取得
   public function get_thread_by_id($thread_id)
   {
     $sql = "SELECT * FROM threads where thread_id = :thread_id";

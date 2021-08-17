@@ -11,12 +11,6 @@
                     ★</span>[<?php echo $user_name; ?>]
                 (<?php echo $comment_count; ?>コメント)</span></p>
     </div>
-    <div class="comment-thread-user">
-
-    </div>
-    <div>
-
-    </div>
 </div>
 
 
@@ -43,9 +37,11 @@
 </div>
 <?php endforeach; ?>
 
+<!-- ページネーション表示 -->
 <?php comment_pagination($arr["max_page"], $arr["now_page"], $thread_id); ?>
 
 
+<!-- コメント作成フォーム -->
 <section class="form">
     <form action="./process/comment_create.php" method="post" name="thread_form" class="comment-form">
         <?php if ($status == 1): ?>
@@ -59,9 +55,11 @@
         <?php endif; ?>
 
         <div class="comment-textarea">
-            <textarea placeholder="コメント" name="comment" id="comment" rows="8" cols="40" required></textarea>
+            <textarea placeholder="コメント" name="comment" id="comment" rows="8" cols="40" maxlength="255"
+                required></textarea>
         </div>
 
+        <!-- ↓モーダル↓ -->
         <div id="overlay" class="overlay"></div>
         <div class="form-window modal-window" data-id="modal-form">
             <p class="modal-secttl">コメント投稿</p>
@@ -82,10 +80,10 @@
             </button>
             <button type="submit" name="submit" class="js-modal-open-form" id="submit-btn">送信</button>
         </div>
-
+        <!-- ↑モーダル↑ -->
     </form>
 
-
+    <!-- モーダル表示ボタン -->
     <button type="button" class="comment-btn send js-modal-open btn btn-warning btn-lg btn-block" id="form_comment_btn"
         data-id="form">
         送信

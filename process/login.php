@@ -8,14 +8,15 @@ include dirname(__FILE__) . "/../assets/_inc/process.php";
 
 $dbuser = new DBUsers();
 
-$mail = htmlspecialchars($_POST["mail"]);
-$pass = htmlspecialchars($_POST["pass"]);
+// メールアドレス、パスワードを取得
+$mail = htmlspecialchars($_POST["mail"], ENT_QUOTES, "UTF-8");
+$pass = htmlspecialchars($_POST["pass"], ENT_QUOTES, "UTF-8");
 
 // DB処理
 try {
   $dbuser->dbh->beginTransaction();
 
-  // ログインフォームに入力されたメールアドレスと、同じものをDBから取得
+  // 入力されたメールアドレスと、同じアドレスのユーザーを取得
   $member = $dbuser->get_user_by_mail($mail);
 
   $dbuser->dbh->commit();
@@ -24,7 +25,7 @@ try {
   echo "失敗しました。" . $e->getMessage();
 }
 
-//指定したハッシュがパスワードにマッチしているかチェック
+// アドレスが合致するユーザーの、パスワードハッシュも合致した場合にログイン
 if (!$member == null && password_verify($pass, $member["pass"])) {
   // セッションハイジャック対策
   session_regenerate_id();
@@ -37,10 +38,11 @@ if (!$member == null && password_verify($pass, $member["pass"])) {
   $_SESSION["user_name"] = $member["user_name"];
   $_SESSION["status"] = $member["status"];
 
+  // 成功文とともにindexにリダイレクト
   $msg = "ログインしました。";
   header("Location: ../index.php");
 
-  // メールアドレスに合致するユーザーがいない or パスワードがマッチしない
+  // メールアドレスに合致するユーザーがいない or パスワードがマッチしない場合
 } else {
   $_SESSION["error"] = "メールアドレスもしくはパスワードが間違っています。";
   // ログインフォームにリダイレクト

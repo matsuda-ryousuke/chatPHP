@@ -1,6 +1,9 @@
 <?php
 require_once "database.php";
 
+/**
+ * commentsテーブルへの接続用クラス
+ */
 class DBComments extends Database
 {
   public function __construct()
@@ -8,7 +11,7 @@ class DBComments extends Database
     parent::database_access();
   }
 
-  // スレッドのコメントを取得、ページネーション対応
+  // 指定したスレッドのコメントを取得、ページネーション対応
   public function get_comments_of_thread($thread_id, $start, $max)
   {
     $sql =

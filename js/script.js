@@ -53,7 +53,7 @@ $(function () {
    ======================================================*/
 
   $(".comment-thread-favo").on("click", function () {
-    // ajaxでfavo登録
+    // ajaxでお気に入り登録
     favorite_ajax();
   });
   function favorite_ajax() {

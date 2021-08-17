@@ -12,7 +12,7 @@ if ($_POST["comment"]) {
   $dbthread = new DBThreads();
   $dbcomment = new DBComments();
 
-  $comment = htmlspecialchars($_POST["comment"]);
+  $comment = htmlspecialchars($_POST["comment"], ENT_QUOTES, "UTF-8");
   $thread_id = $_SESSION["thread_id"];
 
   // セッションから、ユーザー情報を取得
@@ -21,7 +21,7 @@ if ($_POST["comment"]) {
 
   // user_name がPOSTされている かつ ログインユーザーならばその値、なければゲスト
   if (isset($_POST["user_name"]) && $status == 1) {
-    $user_name = htmlspecialchars($_POST["user_name"]);
+    $user_name = htmlspecialchars($_POST["user_name"], ENT_QUOTES, "UTF-8");
   } else {
     $user_name = "ゲスト";
   }

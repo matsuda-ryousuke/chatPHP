@@ -12,7 +12,8 @@ var_dump($_SESSION);
 
 // ログイン時の挙動
 if (isset($_SESSION["login_id"])) {
-  $link = '<a href="./logout.php">ログアウト</a>';
+  $link =
+    '<a href="./user_config.php">ユーザー設定</a><a class="logout" href="./process/logout.php">ログアウト</a>';
 } else {
   $link = '<a href="./login_form.php">ログイン</a>';
 
