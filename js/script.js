@@ -54,22 +54,24 @@ $(function () {
 
   $(".comment-thread-favo").on("click", function () {
     // ajaxでお気に入り登録
-    favorite_ajax();
+    console.log($(this).data("id"));
+    var data = { thread_id: $(this).data("id") };
+    favorite_ajax(data);
+    // ajaxに成功時、favoボタンのactiveと非active（色）をスイッチ
+    if ($(this).hasClass("active")) {
+      $(this).removeClass("active");
+    } else {
+      $(this).addClass("active");
+    }
   });
-  function favorite_ajax() {
+  function favorite_ajax(data) {
     $.ajax({
       type: "POST",
       url: "process/favorite.php",
-
-      success: function () {
-        console.log("ttt");
-        // ajaxに成功時、favoボタンのactiveと非active（色）をスイッチ
-        if ($(".comment-thread-favo").hasClass("active")) {
-          $(".comment-thread-favo").removeClass("active");
-        } else {
-          $(".comment-thread-favo").addClass("active");
-        }
-      },
+      data: data,
+    }).done(function (data) {
+      console.log("ttt");
+      console.log(data);
     });
   }
 });

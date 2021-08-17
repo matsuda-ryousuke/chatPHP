@@ -7,7 +7,7 @@
 
             </span><span><span class="comment-thread-favo <?php if (
               $favorite_flag
-            ): ?>active<?php endif; ?>">
+            ): ?>active<?php endif; ?>" data-id="<?php echo $thread_id; ?>">
                     ★</span>[<?php echo $user_name; ?>]
                 (<?php echo $comment_count; ?>コメント)</span></p>
     </div>

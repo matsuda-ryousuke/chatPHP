@@ -37,9 +37,7 @@
                 </p>
             </div>
         </div>
-        <p><span class="comment-thread-favo <?php if (
-          $favorite_flag
-        ): ?>active<?php endif; ?>">
+        <p><span class="comment-thread-favo active" data-id="<?php echo $thread["thread_id"]; ?>">
                 ★</span></p>
         <button type="submit">表示</button>
     </form>
