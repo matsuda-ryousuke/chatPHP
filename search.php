@@ -15,6 +15,10 @@ $user_id = $_SESSION["user_id"];
 $user_name = $_SESSION["user_name"];
 $status = $_SESSION["status"];
 
+// 表示メッセージを登録
+$msg =
+  "こんにちは " . htmlspecialchars($user_name, \ENT_QUOTES, "UTF-8") . "さん";
+
 // 検索欄を入力せずに検索した場合、index.php(全スレッド表示)
 if ($_GET["search"] == null) {
   header("Location: ./index.php");
@@ -49,4 +53,4 @@ if ($count == 0) {
 }
 
 // view読み込み
-include dirname(__FILE__) . "/view/search.php"; ?>
+include dirname(__FILE__) . "/view/index.php"; ?>

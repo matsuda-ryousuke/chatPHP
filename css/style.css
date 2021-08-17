@@ -2,12 +2,10 @@
 *,
 *:before,
 *:after {
-  -webkit-box-sizing: inherit;
   box-sizing: inherit;
 }
 
 html {
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   font-size: 62.5%;
 }
@@ -23,21 +21,13 @@ body {
 header
 =================================================*/
 .header {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  position: -webkit-sticky;
+  justify-content: space-between;
+  align-items: center;
   position: sticky;
   top: 0;
   background: #fff;
-  -webkit-box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
-          box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+  box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
   margin-bottom: 15px;
 }
 
@@ -48,15 +38,9 @@ header
 }
 
 .header-list {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   height: 50px;
 }
 
@@ -80,12 +64,8 @@ header
 
 @media screen and (min-width: 769px) {
   .header-list li a {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    align-items: center;
     text-align: center;
     height: 100%;
     padding: 0 30px;
@@ -95,8 +75,6 @@ header
   .header-list li:hover {
     background: #aaa;
     color: #fff;
-    -webkit-transition: 0.3s;
-    -webkit-transition: all 0.3s;
     transition: all 0.3s;
   }
   .header-list li:hover .sub-list > .sub-item {
@@ -115,6 +93,11 @@ header
   }
 }
 
+.header-icon {
+  width: 150px;
+  margin-right: 15px;
+}
+
 @media screen and (min-width: 769px) {
   .sub-list {
     position: absolute;
@@ -129,7 +112,6 @@ header
   overflow: hidden;
   opacity: 0;
   height: 0;
-  -webkit-transition: 0.3s;
   transition: 0.3s;
   background: #fff;
 }
@@ -192,15 +174,9 @@ main {
 }
 
 .thread-form {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .thread-title {
@@ -217,15 +193,9 @@ main {
 
 .comment-nav {
   margin-bottom: 5px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .comment-nav p {
@@ -233,12 +203,8 @@ main {
 }
 
 .comment-user {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 
 .comment-user p {
@@ -246,15 +212,9 @@ main {
 }
 
 .comment-form {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   margin-top: 15px;
 }
 
@@ -273,15 +233,9 @@ main {
 
 .comment-textarea {
   margin-bottom: 15px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   width: 50%;
   height: 30%;
 }
@@ -296,15 +250,9 @@ main {
 }
 
 .comment-thread-p {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .comment-thread-title {
@@ -351,7 +299,6 @@ main {
   text-align: center;
   display: table;
   text-decoration: none;
-  -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
@@ -402,15 +349,9 @@ main {
   width: 100%;
   min-height: 100vh;
   margin: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .common-secttl {
@@ -421,15 +362,9 @@ main {
 
 .mv {
   background: #fff;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
+  align-items: center;
+  justify-content: start;
 }
 
 .mv h1 {
@@ -473,12 +408,8 @@ main {
 }
 
 .aboutme-content {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -552,12 +483,8 @@ main {
 
 .myself-list {
   margin-top: 50px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   width: 100%;
 }
 
@@ -589,8 +516,7 @@ main {
   width: 100%;
   height: auto;
   margin-bottom: 30px;
-  -webkit-box-shadow: 0 5px 10px #ccc;
-          box-shadow: 0 5px 10px #ccc;
+  box-shadow: 0 5px 10px #ccc;
   /* 影（[右][下][ぼかし][影の色]）を指定する */
 }
 
@@ -617,12 +543,8 @@ main {
 
 .works-list {
   margin-top: 50px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   width: 100%;
 }
 
@@ -653,8 +575,7 @@ main {
   background: #666;
   width: 100%;
   margin-bottom: 30px;
-  -webkit-box-shadow: 0 5px 10px #ccc;
-          box-shadow: 0 5px 10px #ccc;
+  box-shadow: 0 5px 10px #ccc;
   /* 影（[右][下][ぼかし][影の色]）を指定する */
 }
 
@@ -685,12 +606,8 @@ main {
 
 .contact-list {
   margin-top: 50px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 
 .contact-list li {
@@ -754,24 +671,16 @@ main {
 }
 
 .form-name div {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .form-name .form-control {
   font: 15px/24px sans-serif;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   width: 100%;
   padding: 0.3em;
-  -webkit-transition: 0.3s;
   transition: 0.3s;
   letter-spacing: 1px;
   color: #333;
@@ -782,8 +691,7 @@ main {
 .form-name .form-control:focus {
   border: 1px solid #da3c41;
   outline: none;
-  -webkit-box-shadow: 0 0 5px 1px rgba(218, 60, 65, 0.5);
-          box-shadow: 0 0 5px 1px rgba(218, 60, 65, 0.5);
+  box-shadow: 0 0 5px 1px rgba(218, 60, 65, 0.5);
 }
 
 .form-email {
@@ -792,24 +700,16 @@ main {
 }
 
 .form-email div {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .form-email .form-control {
   font: 15px/24px sans-serif;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   width: 100%;
   padding: 0.3em;
-  -webkit-transition: 0.3s;
   transition: 0.3s;
   letter-spacing: 1px;
   color: #333;
@@ -820,8 +720,7 @@ main {
 .form-email .form-control:focus {
   border: 1px solid #da3c41;
   outline: none;
-  -webkit-box-shadow: 0 0 5px 1px rgba(218, 60, 65, 0.5);
-          box-shadow: 0 0 5px 1px rgba(218, 60, 65, 0.5);
+  box-shadow: 0 0 5px 1px rgba(218, 60, 65, 0.5);
 }
 
 .form-main {
@@ -830,24 +729,16 @@ main {
 }
 
 .form-main div {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .form-main .form-control {
   font: 15px/24px sans-serif;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   width: 100%;
   padding: 0.3em;
-  -webkit-transition: 0.3s;
   transition: 0.3s;
   letter-spacing: 1px;
   color: #333;
@@ -858,18 +749,13 @@ main {
 .form-main .form-control:focus {
   border: 1px solid #da3c41;
   outline: none;
-  -webkit-box-shadow: 0 0 5px 1px rgba(218, 60, 65, 0.5);
-          box-shadow: 0 0 5px 1px rgba(218, 60, 65, 0.5);
+  box-shadow: 0 0 5px 1px rgba(218, 60, 65, 0.5);
 }
 
 .form-group {
   color: red;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
+  justify-content: start;
   margin-bottom: 10px;
 }
 
@@ -878,8 +764,7 @@ main {
   position: fixed;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   width: 80%;
   height: 80%;
   background-color: #dfdddd;
@@ -891,12 +776,8 @@ main {
 .form-window div {
   width: 60%;
   margin: 0px auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
+  justify-content: start;
 }
 
 .form-window div p {
@@ -919,11 +800,7 @@ button {
   display: inline-block;
   padding: 1rem 4rem;
   cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
-  -webkit-transition: all 0.3s;
   transition: all 0.3s;
   text-align: center;
   vertical-align: middle;
@@ -974,8 +851,7 @@ button.disabled {
   position: fixed;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   width: 80%;
   height: 80%;
   background-color: #fffffc;
@@ -1015,32 +891,21 @@ button.disabled {
 }
 
 .modal-close {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 
 .modal-icon-div {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-icon-a {
   background: #666;
   width: 40%;
   margin-bottom: 30px;
-  -webkit-box-shadow: 0 5px 10px #ccc;
-          box-shadow: 0 5px 10px #ccc;
+  box-shadow: 0 5px 10px #ccc;
   /* 影（[右][下][ぼかし][影の色]）を指定する */
 }
 
@@ -1100,8 +965,7 @@ button.disabled {
   position: fixed;
   left: 50%;
   top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   display: none;
   z-index: 9999;
   width: 100%;
@@ -1117,21 +981,6 @@ button.disabled {
   }
 }
 
-@-webkit-keyframes wipebar {
-  0% {
-    left: 0;
-    right: 100%;
-  }
-  50% {
-    left: 0;
-    right: 0;
-  }
-  100% {
-    left: 100%;
-    right: 0;
-  }
-}
-
 @keyframes wipebar {
   0% {
     left: 0;
@@ -1144,21 +993,6 @@ button.disabled {
   100% {
     left: 100%;
     right: 0;
-  }
-}
-
-@-webkit-keyframes wipecolor {
-  0% {
-    color: transparent;
-  }
-  50% {
-    color: transparent;
-  }
-  51% {
-    color: #000;
-  }
-  100% {
-    color: #000;
   }
 }
 
@@ -1192,13 +1026,11 @@ button.disabled {
 }
 
 .wipein.show {
-  -webkit-animation: wipecolor 0.7s ease-in-out both;
-          animation: wipecolor 0.7s ease-in-out both;
+  animation: wipecolor 0.7s ease-in-out both;
 }
 
 .wipein.show:after {
-  -webkit-animation: wipebar 0.7s ease-in-out both;
-          animation: wipebar 0.7s ease-in-out both;
+  animation: wipebar 0.7s ease-in-out both;
 }
 
 @media screen and (max-width: 768px) {
@@ -1216,7 +1048,6 @@ nav
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    -webkit-transition: 0.5s;
     transition: 0.5s;
     z-index: 3;
   }
@@ -1245,8 +1076,7 @@ nav
     font-size: 14px;
     padding: 1em;
     text-decoration: none;
-    -webkit-transition-duration: 0.2s;
-            transition-duration: 0.2s;
+    transition-duration: 0.2s;
   }
   nav .inner ul li .main {
     font-weight: bold;
@@ -1275,41 +1105,6 @@ nav
   /*============
 @keyframes
 =============*/
-  @-webkit-keyframes equalizer01 {
-    0% {
-      width: 70%;
-    }
-    10% {
-      width: 50%;
-    }
-    20% {
-      width: 100%;
-    }
-    30% {
-      width: 10%;
-    }
-    40% {
-      width: 50%;
-    }
-    50% {
-      width: 70%;
-    }
-    60% {
-      width: 50%;
-    }
-    70% {
-      width: 10%;
-    }
-    80% {
-      width: 100%;
-    }
-    90% {
-      width: 10%;
-    }
-    100% {
-      width: 70%;
-    }
-  }
   @keyframes equalizer01 {
     0% {
       width: 70%;
@@ -1343,41 +1138,6 @@ nav
     }
     100% {
       width: 70%;
-    }
-  }
-  @-webkit-keyframes equalizer02 {
-    0% {
-      width: 30%;
-    }
-    10% {
-      width: 20%;
-    }
-    20% {
-      width: 40%;
-    }
-    30% {
-      width: 10%;
-    }
-    40% {
-      width: 20%;
-    }
-    50% {
-      width: 30%;
-    }
-    60% {
-      width: 20%;
-    }
-    70% {
-      width: 10%;
-    }
-    80% {
-      width: 40%;
-    }
-    90% {
-      width: 10%;
-    }
-    100% {
-      width: 30%;
     }
   }
   @keyframes equalizer02 {
@@ -1425,7 +1185,6 @@ nav
     right: 30px;
     width: 30px;
     height: 30px;
-    -webkit-transition: all 0.5s;
     transition: all 0.5s;
     cursor: pointer;
     z-index: 3;
@@ -1438,7 +1197,6 @@ nav
     height: 2px;
     background-color: #333;
     border-radius: 4px;
-    -webkit-transition: all 0.5s;
     transition: all 0.5s;
   }
   .toggle_btn span:nth-child(1) {
@@ -1455,12 +1213,10 @@ nav
   }
   .open .toggle_btn span:nth-child(1) {
     width: 15px;
-    -webkit-transform: translate(5px, 5px) rotate(-45deg);
     transform: translate(-2px, 5px) rotate(-45deg);
   }
   .open .toggle_btn span:nth-child(3) {
     width: 15px;
-    -webkit-transform: translate(-1px, -13px) rotate(45deg);
     transform: translate(-2px, -5px) rotate(45deg);
   }
   /*============
@@ -1468,7 +1224,6 @@ nav
 =============*/
   #mask {
     display: none;
-    -webkit-transition: all 0.5s;
     transition: all 0.5s;
   }
   .open #mask {
@@ -1491,11 +1246,9 @@ nav
     width: 20px;
   }
   #btn13.active span:nth-of-type(1) {
-    -webkit-transform: translate(-1px, 13px) rotate(-45deg);
     transform: translate(-1px, 13px) rotate(-45deg);
   }
   #btn13.active span:nth-of-type(3) {
-    -webkit-transform: translate(-1px, -13px) rotate(45deg);
     transform: translate(-1px, -13px) rotate(45deg);
   }
 }

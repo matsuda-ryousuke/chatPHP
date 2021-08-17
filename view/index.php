@@ -5,7 +5,7 @@
     </h1>
 
     <?php if ($status >= 1): ?>
-    <p><a href="thread_form.php">スレッド作成</a></p>
+    <p><a href="thread_form.php"><img class="header-icon" src="image/user_config.png" alt=""></a></p>
     <?php else: ?>
     <p>ゲストアカウントでは、スレッド作成機能が制限されます。</p>
     <?php endif; ?>
@@ -44,6 +44,11 @@
 </div>
 <?php endforeach; ?>
 
-<?php thread_pagination($arr["max_page"], $arr["now_page"]); ?>
+<?php if (!isset($search)) {
+  thread_pagination($arr["max_page"], $arr["now_page"]);
+} else {
+  search_pagination($arr["max_page"], $arr["now_page"], $search);
+} ?>
+
 
 <?php include dirname(__FILE__) . "/footer.php"; ?>

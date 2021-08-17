@@ -23,7 +23,13 @@
             <input type="text" name="search" id="search">
             <button type="submit">検索</button>
         </form>
-        <?php echo $link; ?>
+
+        <?php if (isset($_SESSION["login_id"])): ?>
+        <a href="./user_config.php"><button type="button" class="header-icon"></button></a><a class="logout"
+            href="./process/logout.php"><button type="button" class="header-icon"></button></a>
+        <?php else: ?>
+        <a href="./login_form.php"> <img class="header-icon" src="image/login.png" alt=""></a>
+        <?php endif; ?>
     </header>
 
     <section class="message">
