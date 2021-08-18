@@ -20,6 +20,11 @@ body {
   background: #ffffea;
 }
 
+a {
+  text-decoration: none;
+  color: #333;
+}
+
 /* ==============================================
 header
 =================================================*/
@@ -32,6 +37,18 @@ header
   background: #fff;
   box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
   margin-bottom: 15px;
+  &-infos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    form {
+      margin-right: 15px;
+      input {
+        font-size: 18px;
+        height: 36px;
+      }
+    }
+  }
   &-logo {
     width: 100px;
     height: 50px;
@@ -95,36 +112,6 @@ header
   }
 }
 
-.sub {
-  &-list {
-    @media screen and (min-width: 769px) {
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      top: 50px;
-      height: 0;
-    }
-  }
-  &-item {
-    overflow: hidden;
-    opacity: 0;
-    height: 0;
-    -webkit-transition: 0.3s;
-    transition: 0.3s;
-    background: #fff;
-    @media screen and (max-width: 768px) {
-      opacity: 1;
-    }
-  }
-}
-
-#menu-btn-check {
-  display: none;
-}
-.menu-btn {
-  display: none;
-}
-
 /* ==============================================
 contents
 =================================================*/
@@ -161,14 +148,17 @@ main {
 }
 
 .thread {
-  border: 1px solid #000;
-  margin: 10px 5px;
-  padding: 10px;
-  background: #fff;
+  &-list {
+    border: 1px solid #000;
+    margin: 10px 5px;
+    padding: 10px;
+    background: #fff;
 
-  div {
-    margin-bottom: 5px;
+    div {
+      margin-bottom: 5px;
+    }
   }
+
   &-form {
     display: flex;
     justify-content: space-between;
@@ -256,6 +246,163 @@ main {
   }
 }
 
+.login {
+  text-align: center;
+  background: #fff;
+  border: 1px solid #ccc;
+  width: 60%;
+  margin: 0 auto;
+  padding: 40px;
+  h1 {
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 40px;
+  }
+  input {
+    width: 50%;
+    margin-bottom: 30px;
+  }
+  &-btn {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+  }
+}
+
+// 画面遷移用ボタン
+.a-btn {
+  color: #484848;
+  display: inline-block;
+  font-size: 18px;
+  background: #eaeef1;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: 0.3s;
+
+  &-icon {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    text-align: center;
+    color: white;
+    background: #0094c8;
+
+    i {
+      font-size: 18px;
+      line-height: 36px;
+      transition: 0.3s;
+    }
+  }
+  &-text {
+    display: inline-block;
+    text-align: center;
+    margin: 0 9px;
+  }
+  &:hover {
+    background: #c73500;
+    color: white;
+  }
+}
+
+.b-btn {
+  text-align: center;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 2px solid #447fff;
+  background: #fff;
+  color: #447fff;
+  font-weight: bold;
+  padding: 0.5em 2em 0.5em 1em;
+  line-height: 1.4;
+  max-width: 300px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+
+  &:hover {
+    background: #447fff;
+    color: #fff;
+  }
+  &:active,
+  &:focus {
+    opacity: 0.8;
+  }
+}
+
+// ボタン用
+.reset {
+  color: black;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: normal;
+  border: none;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+}
+
+.submit-btn {
+  text-align: center;
+  box-sizing: border-box;
+  display: block;
+  border: 2px solid #0094c8;
+  background: #fff;
+  color: #0094c8;
+  font-weight: bold;
+  padding: 0.5em 2.5em 0.5em 1em;
+  line-height: 1.4;
+
+  margin: 0 auto;
+  position: relative;
+  &::after {
+    content: "\f2f6";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 18px;
+    position: absolute;
+    right: 12px;
+    top: 15%;
+    transition: right 0.3s;
+  }
+  &-register::after {
+    content: "\f234";
+  }
+  &-comment::after {
+    content: "\f075";
+  }
+
+  &:hover {
+    background: #0094c8;
+    color: #fff;
+    &::after {
+      border-color: #fff;
+      right: 7px;
+    }
+  }
+  &:active,
+  &:focus {
+    opacity: 0.8;
+  }
+
+  &-cancel {
+    border: 2px solid #c73500;
+    color: #c73500;
+
+    &::after {
+      content: "\f4b3";
+    }
+    &:hover {
+      background: #c73500;
+    }
+  }
+}
 .pager .pagination {
   text-align: center;
 }
@@ -304,7 +451,7 @@ main {
   display: none;
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 768px) {
   .pager .pagination li {
     display: none;
   }
@@ -335,281 +482,6 @@ main {
 /*================================================
 ここまで
 =================================================*/
-
-.section {
-  width: 100%;
-  min-height: 100vh;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.common-secttl {
-  font-size: 40px;
-  font-weight: bold;
-  margin-bottom: 30px;
-}
-
-.mv {
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  h1 {
-    font-size: 60px;
-    font-weight: bold;
-    margin-left: 30px;
-    @media screen and (max-width: 768px) {
-      font-size: 7vw;
-    }
-  }
-}
-
-.about {
-  &-section {
-    text-align: center;
-    background: #f8fbf8;
-  }
-  &-text {
-    line-height: 3; // text の 縦幅を持たせる
-    @media screen and (max-width: 515px) {
-      line-height: 2; // text の 縦幅を持たせる
-      margin: 0 15px;
-      text-align: left;
-      br {
-        display: none;
-      }
-    }
-  }
-}
-
-.aboutme {
-  &-section {
-    text-align: center;
-    // background: #ffdbb7;
-  }
-  &-ttl {
-    margin-bottom: 60px;
-  }
-  &-content {
-    display: flex;
-    justify-content: center;
-
-    @media screen and (max-width: 768px) {
-      display: block;
-    }
-  }
-  &-name {
-    font-weight: bold;
-    margin-bottom: 30px;
-    text-align: center;
-  }
-  &-icon img {
-    width: 200px;
-    height: 300px;
-    margin-bottom: 30px;
-    margin-right: 50px;
-    @media screen and (max-width: 768px) {
-      margin-right: 0px;
-    }
-  }
-  &-detail {
-    width: 100%;
-    text-align: left;
-
-    .item {
-      margin-bottom: 30px;
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
-  &-text {
-    line-height: 2.5rem; // text の 縦幅を持たせる
-    @media screen and (max-width: 515px) {
-      text-align: left;
-      margin: 0 15px;
-      br {
-        display: none;
-      }
-    }
-  }
-}
-
-.myself {
-  &-section {
-    text-align: center;
-    //background: #ddffbc;
-    background: #f8fbf8;
-
-    @media screen and (max-width: 768px) {
-      padding: 100px 0;
-    }
-  }
-
-  @media screen and (max-width: 768px) {
-    &-div {
-      width: 100%;
-    }
-  }
-  &-list {
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    @media screen and (max-width: 768px) {
-      display: block;
-    }
-
-    li {
-      width: 28%;
-      margin: 0 30px;
-      @media screen and (max-width: 768px) {
-        width: 90%;
-        margin: 0 auto;
-      }
-    }
-  }
-  &-name {
-    font-weight: bold;
-    margin-bottom: 30px;
-  }
-  &-icon {
-    background: #666;
-    width: 100%;
-    height: auto;
-    margin-bottom: 30px;
-    box-shadow: 0 5px 10px #ccc; /* 影（[右][下][ぼかし][影の色]）を指定する */
-  }
-  &-detail {
-    .item-ttl {
-      font-weight: bold;
-      margin-bottom: 30px;
-    }
-  }
-}
-
-.works {
-  &-section {
-    text-align: center;
-    // background: #ffffb7;
-    @media screen and (max-width: 768px) {
-      padding: 100px 0;
-    }
-  }
-
-  @media screen and (max-width: 768px) {
-    &-div {
-      width: 100%;
-    }
-  }
-  &-list {
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    @media screen and (max-width: 768px) {
-      display: block;
-    }
-
-    li {
-      width: 28%;
-      margin: 0 30px;
-      @media screen and (max-width: 768px) {
-        width: 90%;
-        margin: 0 auto;
-      }
-    }
-  }
-
-  &-name {
-    font-weight: bold;
-    margin-bottom: 30px;
-  }
-  &-icon {
-    background: #666;
-    width: 100%;
-    margin-bottom: 30px;
-    box-shadow: 0 5px 10px #ccc; /* 影（[右][下][ぼかし][影の色]）を指定する */
-  }
-  &-detail {
-    .item-ttl {
-      font-weight: bold;
-      margin-bottom: 30px;
-    }
-  }
-  &-table {
-    margin: 0 auto;
-    text-align: center;
-    th {
-      font-weight: bold;
-    }
-  }
-}
-
-.contact {
-  &-section {
-    text-align: center;
-    // background: #ffd6ff;
-    background: #f8fbf8;
-    @media screen and (max-width: 768px) {
-      padding: 100px 0;
-    }
-  }
-  &-list {
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
-    li {
-      width: 240px;
-      margin: 0 30px;
-    }
-  }
-  &-name {
-    font-weight: bold;
-    margin-bottom: 30px;
-  }
-  &-icon {
-    background: #666;
-    width: 100%;
-    height: 240px;
-    margin-bottom: 30px;
-  }
-  &-detail {
-    .item {
-      margin-bottom: 30px;
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
-
-  &-text {
-    line-height: 2.5rem;
-    margin-bottom: 20px;
-    @media screen and (max-width: 515px) {
-      line-height: 2; // text の 縦幅を持たせる
-      margin: 0 15px;
-      text-align: left;
-      br {
-        display: none;
-      }
-    }
-  }
-
-  &-table {
-    display: table;
-    background: red;
-    dl {
-      display: table-row;
-    }
-    dt,
-    dd {
-      display: table-cell;
-    }
-  }
-}
 
 .form {
   &-name {
@@ -725,50 +597,29 @@ main {
   }
 }
 
-/*主な共通部分は省略*/
-button {
-  font-size: 1.6rem;
-  font-weight: 700;
-  line-height: 1.5;
-  position: relative;
-  display: inline-block;
-  padding: 1rem 4rem;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  text-align: center;
-  vertical-align: middle;
-  text-decoration: none;
-  letter-spacing: 0.1em;
-  color: #212529;
-  border-radius: 0.5rem;
-}
+// /*主な共通部分は省略*/
+// button {
+//   font-size: 1.6rem;
+//   font-weight: 700;
+//   line-height: 1.5;
+//   position: relative;
+//   display: inline-block;
+//   padding: 1rem 4rem;
+//   cursor: pointer;
+//   -webkit-user-select: none;
+//   -moz-user-select: none;
+//   -ms-user-select: none;
+//   user-select: none;
+//   -webkit-transition: all 0.3s;
+//   transition: all 0.3s;
+//   text-align: center;
+//   vertical-align: middle;
+//   text-decoration: none;
+//   letter-spacing: 0.1em;
+//   color: #212529;
+//   border-radius: 0.5rem;
+// }
 
-button.js-modal-open-form {
-  border: 2px solid #000;
-  border-radius: 0;
-  background: #fff;
-}
-
-button.js-modal-open-form:hover {
-  color: #fff;
-  background: #00be5f;
-}
-
-button.js-modal-close-form {
-  border: 2px solid #000;
-  border-radius: 0;
-  background: #fff;
-}
-
-button.js-modal-close-form:hover {
-  color: #fff;
-  background: #e65252;
-}
 button.disabled {
   border: 2px solid #000;
   border-radius: 0;
@@ -779,7 +630,7 @@ button.disabled {
 .footer-section {
   width: 100%;
   text-align: center;
-  margin: 0 auto;
+  margin: 15px auto;
 }
 
 /* モーダルウィンドウ */
@@ -843,6 +694,15 @@ button.disabled {
   }
   &-icon {
     width: 100%;
+  }
+
+  &-btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    div {
+      width: 50%;
+    }
   }
 }
 

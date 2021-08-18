@@ -38,7 +38,7 @@
             </div>
         </div>
         <p><span class="comment-thread-favo active" data-id="<?php echo $thread["thread_id"]; ?>">
-                ★</span></p>
+                <i class="fas fa-star"></i></span></p>
         <button type="submit">表示</button>
     </form>
 </div>

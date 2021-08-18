@@ -40,20 +40,20 @@ function comment_pagination($max_page, $now_page, $thread_id)
   <ul class="pagination">
       <li class="first"><a href="thread_content.php?id=' .
     $thread_id .
-    '&page_id=1"><span>«</span></a></li>';
+    '&page_id=1"><span><i class="fas fa-angle-double-left"></i></span></a></li>';
   if ($now_page == 1) {
     echo '<li class="pre"><a class="disable" href="thread_content.php?id=' .
       $thread_id .
       "&page_id=" .
       $pre_page .
-      '"><span><</span>
+      '"><span><i class="fas fa-angle-left"></i></span>
     </a></li>';
   } else {
     echo '<li class="pre"><a href="thread_content.php?id=' .
       $thread_id .
       "&page_id=" .
       $pre_page .
-      '"><span><</span>
+      '"><span><i class="fas fa-angle-left"></i></span>
     </a></li>';
   }
 
@@ -84,20 +84,20 @@ function comment_pagination($max_page, $now_page, $thread_id)
       $thread_id .
       "&page_id=" .
       $next_page .
-      '"><span>></span></a></li>';
+      '"><span><i class="fas fa-angle-right"></i></span></a></li>';
   } else {
     echo '<li class="next"><a href="thread_content.php?id=' .
       $thread_id .
       "&page_id=" .
       $next_page .
-      '"><span>></span></a></li>';
+      '"><span><i class="fas fa-angle-right"></i></span></a></li>';
   }
 
   echo '<li class="last"><a href="thread_content.php?id=' .
     $thread_id .
     "&page_id=" .
     $max_page .
-    '"><span>»</span></a></li>
+    '"><span><i class="fas fa-angle-double-right"></i></span></a></li>
   </ul>
   </div>';
 }
@@ -110,16 +110,16 @@ function thread_pagination($max_page, $now_page)
 
   echo '<div class="pager">
   <ul class="pagination">
-      <li class="first"><a href="index.php?page_id=1"><span>«</span></a></li>';
+      <li class="first"><a href="index.php?page_id=1"><span><i class="fas fa-angle-double-left"></i></span></a></li>';
   if ($now_page == 1) {
     echo '<li class="pre"><a class="disable" href="index.php?page_id=' .
       $pre_page .
-      '"><span><</span>
+      '"><span><i class="fas fa-angle-left"></i></span>
     </a></li>';
   } else {
     echo '<li class="pre"><a href="index.php?page_id=' .
       $pre_page .
-      '"><span><</span>
+      '"><span><i class="fas fa-angle-left"></i></span>
     </a></li>';
   }
 
@@ -144,16 +144,16 @@ function thread_pagination($max_page, $now_page)
   if ($now_page == $max_page) {
     echo '<li class="next"><a class="disable" href="index.php?page_id=' .
       $next_page .
-      '"><span>></span></a></li>';
+      '"><span><i class="fas fa-angle-right"></i></span></a></li>';
   } else {
     echo '<li class="next"><a href="index.php?page_id=' .
       $next_page .
-      '"><span>></span></a></li>';
+      '"><span><i class="fas fa-angle-right"></i></span></a></li>';
   }
 
   echo '<li class="last"><a href="index.php?page_id=' .
     $max_page .
-    '"><span>»</span></a></li>
+    '"><span><i class="fas fa-angle-double-right"></i></span></a></li>
   </ul>
   </div>';
 }
@@ -168,20 +168,20 @@ function search_pagination($max_page, $now_page, $search)
   <ul class="pagination">
       <li class="first"><a href="search.php?search=' .
     $search .
-    '&page_id=1"><span>«</span></a></li>';
+    '&page_id=1"><span><i class="fas fa-angle-double-left"></i></span></a></li>';
   if ($now_page == 1) {
     echo '<li class="pre"><a class="disable" href="search.php?search=' .
       $search .
       "&page_id=" .
       $pre_page .
-      '"><span><</span>
+      '"><span><i class="fas fa-angle-left"></i></span>
     </a></li>';
   } else {
     echo '<li class="pre"><a href="search.php?search=' .
       $search .
       "&page_id=" .
       $pre_page .
-      '"><span><</span>
+      '"><span><i class="fas fa-angle-left"></i></span>
     </a></li>';
   }
 
@@ -212,20 +212,20 @@ function search_pagination($max_page, $now_page, $search)
       $search .
       "&page_id=" .
       $next_page .
-      '"><span>></span></a></li>';
+      '"><span><i class="fas fa-angle-right"></i></span></a></li>';
   } else {
     echo '<li class="next"><a href="search.php?search=' .
       $search .
       "&page_id=" .
       $next_page .
-      '"><span>></span></a></li>';
+      '"><span><i class="fas fa-angle-right"></i></span></a></li>';
   }
 
   echo '<li class="last"><a href="search.php?search=' .
     $search .
     "&page_id=" .
     $max_page .
-    '"><span>»</span></a></li>
+    '"><span><i class="fas fa-angle-double-right"></i></span></a></li>
   </ul>
   </div>';
 }

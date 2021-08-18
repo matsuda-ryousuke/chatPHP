@@ -8,7 +8,7 @@
             </span><span><span class="comment-thread-favo <?php if (
               $favorite_flag
             ): ?>active<?php endif; ?>" data-id="<?php echo $thread_id; ?>">
-                    ★</span>[<?php echo $user_name; ?>]
+                    <i class="fas fa-star"></i></span>[<?php echo $user_name; ?>]
                 (<?php echo $comment_count; ?>コメント)</span></p>
     </div>
 </div>
@@ -70,24 +70,29 @@
                 <p class="modal-form-item" id="form_user_name"></p>
             </div>
             <div>
-                <label>スレッドタイトル</label>
+                <label>コメント内容</label>
             </div>
             <div>
                 <p class="modal-form-item" id="form_comment"></p>
             </div>
-            <button type="button" class="js-modal-close" id="close">
-                Close
-            </button>
-            <button type="submit" name="submit" class="js-modal-open-form" id="submit-btn">送信</button>
+            <div class="modal-btns">
+                <div>
+                    <button type="button" class="reset submit-btn submit-btn-cancel js-modal-close" id="close">
+                        キャンセル
+                    </button>
+                </div>
+                <div>
+                    <button type="submit" name="submit" class="reset submit-btn submit-btn-comment js-modal-open-form"
+                        id="submit-btn">コメント投稿</button>
+                </div>
+            </div>
         </div>
         <!-- ↑モーダル↑ -->
     </form>
 
     <!-- モーダル表示ボタン -->
-    <button type="button" class="comment-btn send js-modal-open btn btn-warning btn-lg btn-block" id="form_comment_btn"
-        data-id="form">
-        送信
-    </button>
+    <button type="button" class="reset submit-btn submit-btn-comment js-modal-open" id="form_comment_btn"
+        data-id="form">送信</button>
 </section>
 
 <?php include dirname(__FILE__) . "/footer.php"; ?>

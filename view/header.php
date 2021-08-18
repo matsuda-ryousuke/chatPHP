@@ -8,7 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/style.css" />
-
+    <script src="https://kit.fontawesome.com/13de7bd245.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -19,17 +19,24 @@
             </div>
         </a>
 
-        <form action="./search.php" method="get">
-            <input type="text" name="search" id="search">
-            <button type="submit">検索</button>
-        </form>
+        <div class="header-infos">
+            <form action="./search.php" method="get">
+                <input type="text" name="search" id="search" class="fa" placeholder="&#xf002; 検索内容を入力">
+            </form>
 
-        <?php if (isset($_SESSION["login_id"])): ?>
-        <a href="./user_config.php"><button type="button" class="header-icon"></button></a><a class="logout"
-            href="./process/logout.php"><button type="button" class="header-icon"></button></a>
-        <?php else: ?>
-        <a href="./login_form.php"> <img class="header-icon" src="image/login.png" alt=""></a>
-        <?php endif; ?>
+            <?php if (isset($_SESSION["login_id"])): ?>
+
+
+            <a href="./user_config.php" class="a-btn"><span class="a-btn-icon"><i
+                        class="fas fa-user-cog"></i></span><span class="a-btn-text">ユーザー設定</span></a>
+            <a href="./process/logout.php" class="a-btn"><span class="a-btn-icon"><i
+                        class="fas fa-sign-out-alt"></i></span><span class="a-btn-text">ログアウト</span></a>
+
+            <?php else: ?>
+            <a href="./login_form.php" class="a-btn"><span class="a-btn-icon"><i
+                        class="fas fa-sign-in-alt"></i></span><span class="a-btn-text">ログイン</span></a>
+            <?php endif; ?>
+        </div>
     </header>
 
     <section class="message">
