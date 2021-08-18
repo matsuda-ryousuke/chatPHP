@@ -212,7 +212,6 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
     height: 30%;
     textarea {
       width: 100%;
@@ -266,6 +265,17 @@ main {
     display: flex;
     justify-content: flex-end;
     margin-top: 15px;
+  }
+}
+
+.user {
+  text-align: center;
+  &-div {
+    margin: 30px auto;
+  }
+  &-ttl {
+    font-size: 25px;
+    font-weight: bold;
   }
 }
 
@@ -376,6 +386,9 @@ main {
   }
   &-comment::after {
     content: "\f075";
+  }
+  &-thread::after {
+    content: "\f086";
   }
 
   &:hover {
@@ -594,6 +607,10 @@ main {
       font-weight: bold;
       margin-bottom: 10px;
     }
+  }
+  &-div div {
+    text-align: center;
+    margin: 0px auto 30px;
   }
 }
 

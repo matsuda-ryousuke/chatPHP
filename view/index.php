@@ -23,8 +23,9 @@
             <a href="thread_content.php?id=<?php echo $row[
               "thread_id"
             ]; ?>&page_id=1">
-                <div class="thread-list" data-id="<?php echo $row["thread_id"]; ?>">
-                    <!-- <form class="thread-form" action="thread_content.php" method="get" name="thread_form"> -->
+                <div class="thread-list" data-id="<?php echo $row[
+                  "thread_id"
+                ]; ?>">
                     <div class="thread-title">
                         <p><?php echo $row["title"]; ?>
                             (<?php echo $row["comment_count"]; ?>)
@@ -32,8 +33,8 @@
                     </div>
                     <div class="thread-user">
                         <p>スレ主： <?php echo $dbuser->get_username_by_id(
-                  $row["user_id"]
-                ); ?>
+                          $row["user_id"]
+                        ); ?>
                         </p>
                     </div>
                     <div class="thread-date">
@@ -48,10 +49,10 @@
     </ul>
 
     <?php if (!isset($search)) {
-  thread_pagination($arr["max_page"], $arr["now_page"]);
-} else {
-  search_pagination($arr["max_page"], $arr["now_page"], $search);
-} ?>
+      thread_pagination($arr["max_page"], $arr["now_page"]);
+    } else {
+      search_pagination($arr["max_page"], $arr["now_page"], $search);
+    } ?>
 
 </section>
 

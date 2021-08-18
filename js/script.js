@@ -2,46 +2,75 @@ $(function () {
   /*======================================================
     モーダルの挙動 
    ======================================================*/
+  // 現在のスクロール量を取得するための変数定義
   var scrollPos;
+
+  // モーダルオープン用ボタンのクリック時
   $(".js-modal-open").click(function () {
-    scrollPos = $(window).scrollTop();
-    $("body").addClass("no_scroll").css({ top: -scrollPos });
-    var id = $(this).data("id");
-    $("#overlay, .modal-window[data-id='modal-" + id + "']").fadeIn();
-    if ($(this).attr("id") == "form_btn") {
-      var form_user_name = $("#form_user_name");
-      var form_title = $("#form_title");
-      var user_name = $("#user_name").val();
-      var title = $("#title").val();
-      form_user_name.html(user_name);
-      form_title.html(title);
-    }
+    // スレッド作成フォームのボタンクリック時
     if ($(this).attr("id") == "form_thread_btn") {
-      var form_user_name = $("#form_user_name");
-      var form_title = $("#form_title");
+      // submitせずに、バリデーションチェック
+      if ($(this).parent("form").get(0).reportValidity()) {
+        // バリデーションOK の場合にモーダル表示
+        var form_user_name = $("#form_user_name");
+        var form_title = $("#form_title");
 
-      var user_name = $("#user_name").val();
-      var title = $("#title").val();
+        var user_name = $("#user_name").val();
+        var title = $("#title").val();
 
-      if (user_name == "") {
-        user_name = "ゲスト";
+        // ユーザー名が未入力ならば、ゲストとする
+        if (user_name == "") {
+          user_name = "ゲスト";
+        }
+        // モーダル内にinputされたデータを描写
+        form_user_name.html(user_name);
+        form_title.html(title);
+        // ボタンクリック時現在のスクロール量を取得
+        scrollPos = $(window).scrollTop();
+        // 背景をスクロールさせない
+        $("body").addClass("no_scroll").css({ top: -scrollPos });
+        // data-id = "form"
+        var id = $(this).data("id");
+        // オーバーレイ、モーダル（data-id が modal-form のもの）をフェードイン
+        $("#overlay, .modal-window[data-id='modal-" + id + "']").fadeIn();
       }
-      form_user_name.html(user_name);
-      form_title.html(title);
     }
+
+    // コメント投稿フォームのボタンクリック時（挙動はスレッド作成時とほぼ同じ）
     if ($(this).attr("id") == "form_comment_btn") {
-      var form_user_name = $("#form_user_name");
-      var form_comment = $("#form_comment");
-      var user_name = $("#user_name").val();
-      var comment = $("#comment").val();
-      if (user_name == null) {
-        user_name = "ゲスト";
+      if ($(this).parents("form").get(0).reportValidity()) {
+        var form_user_name = $("#form_user_name");
+        var form_comment = $("#form_comment");
+        var user_name = $("#user_name").val();
+        var comment = $("#comment").val();
+        if (user_name == null) {
+          user_name = "ゲスト";
+        }
+        form_user_name.html(user_name);
+        form_comment.html(comment);
+        scrollPos = $(window).scrollTop();
+        $("body").addClass("no_scroll").css({ top: -scrollPos });
+        var id = $(this).data("id");
+        $("#overlay, .modal-window[data-id='modal-" + id + "']").fadeIn();
       }
-      form_user_name.html(user_name);
-      form_comment.html(comment);
+    }
+
+    // ユーザー名変更フォームのボタンクリック時（挙動はスレッド作成時とほぼ同じ）
+    if ($(this).attr("id") == "form_user_name_btn") {
+      if ($(this).parents("form").get(0).reportValidity()) {
+        var form_user_name = $("#form_user_name");
+        var user_name = $("#user_name").val();
+
+        form_user_name.html(user_name);
+        scrollPos = $(window).scrollTop();
+        $("body").addClass("no_scroll").css({ top: -scrollPos });
+        var id = $(this).data("id");
+        $("#overlay, .modal-window[data-id='modal-" + id + "']").fadeIn();
+      }
     }
   });
 
+  // モーダル閉じるボタン、もしくはオーバーレイのクリック時にモーダルをフェードアウト
   $(".js-modal-close, #overlay").click(function () {
     $("body").removeClass("no_scroll");
     $(window).scrollTop(scrollPos);
@@ -74,4 +103,13 @@ $(function () {
       console.log(data);
     });
   }
+
+  // ユーザー設定画面での☆クリック時
+  $(".favorite-list").click(function (e) {
+    var target = $(e.target);
+    // クリック対象がアイコンだった場合、aタグの遷移をキャンセル
+    if (target.hasClass("favo-icon")) {
+      e.preventDefault();
+    }
+  });
 });

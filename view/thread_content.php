@@ -44,20 +44,25 @@
 <!-- コメント作成フォーム -->
 <section class="form">
     <form action="./process/comment_create.php" method="post" name="thread_form" class="comment-form">
-        <?php if ($status == 1): ?>
-        <div>
+        <div class="form-div">
+            <?php if ($status == 1): ?>
             <div>
+                <div><input type="text" placeholder="名前" name="user_name" id="user_name" value="<?php echo $_SESSION[
+                  "user_name"
+                ]; ?>"></div>
             </div>
-            <div><input type="text" placeholder="名前" name="user_name" id="user_name" value="<?php echo $_SESSION[
-              "user_name"
-            ]; ?>"></div>
-        </div>
-        <?php endif; ?>
+            <?php endif; ?>
 
-        <div class="comment-textarea">
-            <textarea placeholder="コメント" name="comment" id="comment" rows="8" cols="40" maxlength="255"
-                required></textarea>
+            <div class="comment-textarea">
+                <textarea placeholder="コメント" name="comment" id="comment" rows="8" cols="40" maxlength="255"
+                    required></textarea>
+            </div>
+
+            <!-- モーダル表示ボタン -->
+            <button type="button" class="reset submit-btn submit-btn-comment js-modal-open" id="form_comment_btn"
+                data-id="form">送信</button>
         </div>
+
 
         <!-- ↓モーダル↓ -->
         <div id="overlay" class="overlay"></div>
@@ -90,9 +95,7 @@
         <!-- ↑モーダル↑ -->
     </form>
 
-    <!-- モーダル表示ボタン -->
-    <button type="button" class="reset submit-btn submit-btn-comment js-modal-open" id="form_comment_btn"
-        data-id="form">送信</button>
+
 </section>
 
 <?php include dirname(__FILE__) . "/footer.php"; ?>

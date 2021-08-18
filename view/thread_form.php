@@ -11,6 +11,12 @@
             <input type="text" placeholder="タイトル" name="title" id="title" required>
         </div>
 
+        <!-- モーダル表示用ボタン -->
+        <button type="button" class="js-modal-open reset submit-btn submit-btn-thread" id="form_thread_btn"
+            data-id="form">
+            送信
+        </button>
+
         <!-- ↓モーダル↓ -->
         <div id="overlay" class="overlay"></div>
         <div class="form-window modal-window" data-id="modal-form">
@@ -43,11 +49,6 @@
         <!-- ↑モーダル↑ -->
     </form>
 
-    <!-- モーダル表示用ボタン -->
-    <button type="button" class="js-modal-open reset submit-btn submit-btn-register" id="form_thread_btn"
-        data-id="form">
-        送信
-    </button>
 
 
 

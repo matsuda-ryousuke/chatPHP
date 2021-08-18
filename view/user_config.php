@@ -1,47 +1,93 @@
 <?php include dirname(__FILE__) . "/header.php"; ?>
 
 
-<p>
-    ユーザー名
-</p>
-<p>
-    <?php echo $user_name; ?>
-</p>
-
-<p>お気に入りリスト</p>
-
-<?php foreach ($stmt as $row): ?>
-<?php $thread = $dbthread->get_thread_by_id($row["thread_id"]); ?>
-<div class="thread" data-id="<?php echo $thread["thread_id"]; ?>">
-
-    <form class="thread-form" action="thread_content.php" method="get" name="thread_form">
-        <div>
-            <input type="hidden" name="id" value="<?php echo $thread[
-              "thread_id"
-            ]; ?>">
-            <input type="hidden" name="page_id" value=1>
-
-            <div class="thread-title">
-                <p><?php echo $thread["title"]; ?>
-                    (<?php echo $thread["comment_count"]; ?>)
-                </p>
+<section class="user">
+    <div class="user-div">
+        <p class="user-ttl">ユーザー名</p>
+        <form action="./process/user_name_edit.php" method="post" name="user_name_form">
+            <div>
+                <input type="text" name="user_name" id="user_name" value="<?php echo $user_name; ?>">
             </div>
-            <div class="thread-user">
-                <p>スレ主： <?php echo $dbuser->get_username_by_id(
-                  $thread["user_id"]
-                ); ?>
-                </p>
+            <!-- モーダル表示ボタン -->
+            <button type="button" class="reset submit-btn submit-btn-comment js-modal-open" id="form_user_name_btn"
+                data-id="form">送信</button>
+
+            <!-- ↓モーダル↓ -->
+            <div id="overlay" class="overlay"></div>
+            <div class="form-window modal-window" data-id="modal-form">
+                <p class="modal-secttl">ユーザー名変更</p>
+                <div>
+                    <label>旧ユーザー名</label>
+                </div>
+                <div>
+                    <p class="modal-form-item" id="form_user_name_old"><?php echo $user_name; ?></p>
+                </div>
+                <div>
+                    <label>新ユーザー名</label>
+                </div>
+                <div>
+                    <p class="modal-form-item" id="form_user_name"></p>
+                </div>
+                <div class="modal-btns">
+                    <div>
+                        <button type="button" class="reset submit-btn submit-btn-cancel js-modal-close" id="close">
+                            キャンセル
+                        </button>
+                    </div>
+                    <div>
+                        <button type="submit" name="submit"
+                            class="reset submit-btn submit-btn-comment js-modal-open-form"
+                            id="submit-btn">コメント投稿</button>
+                    </div>
+                </div>
             </div>
-            <div class="thread-date">
-                <p><?php echo $thread["updated_at"]; ?>
-                </p>
-            </div>
-        </div>
-        <p><span class="comment-thread-favo active" data-id="<?php echo $thread["thread_id"]; ?>">
-                <i class="fas fa-star"></i></span></p>
-        <button type="submit">表示</button>
-    </form>
-</div>
-<?php endforeach; ?>
+            <!-- ↑モーダル↑ -->
+        </form>
+    </div>
+
+
+    <div class="user-div">
+        <p class="user-ttl">お気に入りリスト</p>
+
+        <ul class="thread-ul">
+            <?php foreach ($stmt as $row): ?>
+            <?php $thread = $dbthread->get_thread_by_id($row["thread_id"]); ?>
+            <li>
+
+                <a href="thread_content.php?id=<?php echo $thread[
+                  "thread_id"
+                ]; ?>&page_id=1" class="favorite-list">
+                    <div class="thread-list" data-id="<?php echo $thread[
+                      "thread_id"
+                    ]; ?>">
+                        <div>
+                            <div class="thread-title">
+                                <p><?php echo $thread["title"]; ?>
+                                    (<?php echo $thread["comment_count"]; ?>)
+                                </p>
+                            </div>
+                            <div class="thread-user">
+                                <p>スレ主： <?php echo $dbuser->get_username_by_id(
+                                  $thread["user_id"]
+                                ); ?>
+                                </p>
+                            </div>
+                            <div class="thread-date">
+                                <p><?php echo $thread["updated_at"]; ?>
+                                </p>
+                            </div>
+                        </div>
+                        <p><span class="comment-thread-favo active favo-icon" data-id="<?php echo $thread[
+                          "thread_id"
+                        ]; ?>">
+                                <i class="fas fa-star favo-icon"></i></span></p>
+                    </div>
+                </a>
+            </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+
+</section>
 
 <?php include dirname(__FILE__) . "/footer.php";
