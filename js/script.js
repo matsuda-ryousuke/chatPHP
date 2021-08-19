@@ -58,6 +58,7 @@ $(function () {
     // ユーザー名変更フォームのボタンクリック時（挙動はスレッド作成時とほぼ同じ）
     if ($(this).attr("id") == "form_user_name_btn") {
       if ($(this).parents("form").get(0).reportValidity()) {
+        console.log($(this).parents("form").get(0).reportValidity());
         var form_user_name = $("#form_user_name");
         var user_name = $("#user_name").val();
 
@@ -110,6 +111,14 @@ $(function () {
     // クリック対象がアイコンだった場合、aタグの遷移をキャンセル
     if (target.hasClass("favo-icon")) {
       e.preventDefault();
+    }
+  });
+
+  $(".nav-search").click(function () {
+    if ($(".header-under").hasClass("open")) {
+      $(".header-under").removeClass("open");
+    } else {
+      $(".header-under").addClass("open");
     }
   });
 });

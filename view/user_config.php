@@ -8,7 +8,7 @@
         </div>
         <form action="./process/user_name_edit.php" method="post" name="user_name_form">
             <div>
-                <input type="text" name="user_name" id="user_name" value="<?php echo $user_name; ?>">
+                <input type="text" name="user_name" id="user_name" value="<?php echo $user_name; ?>" required>
             </div>
             <!-- モーダル表示ボタン -->
             <button type="button" class="reset submit-btn submit-btn-comment js-modal-open" id="form_user_name_btn"

@@ -48,15 +48,52 @@
 
             </nav>
             <div class="toggle_btn" id="btn13">
-                <div>
-                    <i class="fas fa-search"></i>
+                <div class="nav-btns">
+                    <div class="nav-box nav-search">
+                        <i class="fas fa-search"></i>
+                        <div class="nav-text">検索</div>
+                    </div>
+                    <!-- スマホ用の検索フォーム -->
+                    <div class="header-under">
+                        <form action="./search.php" method="get">
+                            <input type="text" name="search" id="search-responsive" class="fa"
+                                placeholder="&#xf002; 検索内容を入力">
+                        </form>
+                    </div>
+
+
+                    <?php if (isset($_SESSION["login_id"])): ?>
+
+                    <a href="./user_config.php">
+                        <div class="nav-box">
+                            <i class="fas fa-user-cog"></i>
+                            <div class="nav-text">ユーザー設定</div>
+                        </div>
+                    </a>
+
+                    <a href="./process/logout.php">
+                        <div class="nav-box">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <div class="nav-text">ログアウト</div>
+                        </div>
+                    </a>
+                    <?php else: ?>
+
+                    <a href="./login_form.php">
+                        <div class="nav-box">
+                            <i class="fas fa-sign-in-alt"></i>
+                            <div class="nav-text">ログイン</div>
+                        </div>
+                    </a>
+                    <?php endif; ?>
                 </div>
-                <div>
-                    <i class="fas fa-chevron-circle-down"></i>
-                </div>
+
             </div>
         </div>
+
+
     </header>
+
 
     <section class="message">
         <?php if (isset($success)): ?>
