@@ -1052,6 +1052,10 @@ button.disabled {
           animation: wipebar 0.7s ease-in-out both;
 }
 
+.toggle_btn {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
   /*============
 nav
@@ -1270,16 +1274,26 @@ nav
 .toggle_btn
 =============*/
   .toggle_btn {
-    display: block;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
     position: fixed;
-    top: 30px;
-    right: 30px;
-    width: 30px;
-    height: 30px;
+    top: 10px;
+    right: 0px;
+    width: 100%;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
     cursor: pointer;
     z-index: 3;
+  }
+  .toggle_btn div {
+    width: 60px;
+  }
+  .toggle_btn div i {
+    font-size: 30px;
   }
   .toggle_btn span {
     display: block;

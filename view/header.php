@@ -23,24 +23,38 @@
             </div>
         </a>
 
-        <div class="header-infos">
-            <form action="./search.php" method="get">
-                <input type="text" name="search" id="search" class="fa" placeholder="&#xf002; 検索内容を入力">
-                <button type="submit" class="header-search-btn"></button>
-            </form>
+        <div>
+            <nav class="header-nav">
+                <div class="header-infos">
 
-            <?php if (isset($_SESSION["login_id"])): ?>
+                    <form action="./search.php" method="get">
+                        <input type="text" name="search" id="search" class="fa" placeholder="&#xf002; 検索内容を入力">
+                        <button type="submit" class="header-search-btn"></button>
+                    </form>
+
+                    <?php if (isset($_SESSION["login_id"])): ?>
 
 
-            <a href="./user_config.php" class="a-btn"><span class="a-btn-icon"><i
-                        class="fas fa-user-cog"></i></span><span class="a-btn-text">ユーザー設定</span></a>
-            <a href="./process/logout.php" class="a-btn"><span class="a-btn-icon"><i
-                        class="fas fa-sign-out-alt"></i></span><span class="a-btn-text">ログアウト</span></a>
+                    <a href="./user_config.php" class="a-btn"><span class="a-btn-icon"><i
+                                class="fas fa-user-cog"></i></span><span class="a-btn-text">ユーザー設定</span></a>
+                    <a href="./process/logout.php" class="a-btn"><span class="a-btn-icon"><i
+                                class="fas fa-sign-out-alt"></i></span><span class="a-btn-text">ログアウト</span></a>
 
-            <?php else: ?>
-            <a href="./login_form.php" class="a-btn"><span class="a-btn-icon"><i
-                        class="fas fa-sign-in-alt"></i></span><span class="a-btn-text">ログイン</span></a>
-            <?php endif; ?>
+                    <?php else: ?>
+                    <a href="./login_form.php" class="a-btn"><span class="a-btn-icon"><i
+                                class="fas fa-sign-in-alt"></i></span><span class="a-btn-text">ログイン</span></a>
+                    <?php endif; ?>
+                </div>
+
+            </nav>
+            <div class="toggle_btn" id="btn13">
+                <div>
+                    <i class="fas fa-search"></i>
+                </div>
+                <div>
+                    <i class="fas fa-chevron-circle-down"></i>
+                </div>
+            </div>
         </div>
     </header>
 
