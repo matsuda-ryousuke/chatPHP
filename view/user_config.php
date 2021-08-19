@@ -3,14 +3,16 @@
 
 <section class="user">
     <div class="user-div">
-        <p class="user-ttl">ユーザー名</p>
+        <div>
+            <p class="user-ttl">ユーザー名</p>
+        </div>
         <form action="./process/user_name_edit.php" method="post" name="user_name_form">
             <div>
                 <input type="text" name="user_name" id="user_name" value="<?php echo $user_name; ?>">
             </div>
             <!-- モーダル表示ボタン -->
             <button type="button" class="reset submit-btn submit-btn-comment js-modal-open" id="form_user_name_btn"
-                data-id="form">送信</button>
+                data-id="form">変更</button>
 
             <!-- ↓モーダル↓ -->
             <div id="overlay" class="overlay"></div>
@@ -86,6 +88,9 @@
             </li>
             <?php endforeach; ?>
         </ul>
+
+        <?php favorite_pagination($arr["max_page"], $arr["now_page"]); ?>
+
     </div>
 
 </section>

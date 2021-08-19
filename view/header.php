@@ -16,12 +16,17 @@
     <header class="header">
         <a href="./index.php">
             <div class="header-logo">
+                <div>
+                    <i class="far fa-comments"></i>
+                    <p>まっちゃんねる</p>
+                </div>
             </div>
         </a>
 
         <div class="header-infos">
             <form action="./search.php" method="get">
                 <input type="text" name="search" id="search" class="fa" placeholder="&#xf002; 検索内容を入力">
+                <button type="submit" class="header-search-btn"></button>
             </form>
 
             <?php if (isset($_SESSION["login_id"])): ?>

@@ -229,3 +229,59 @@ function search_pagination($max_page, $now_page, $search)
   </ul>
   </div>';
 }
+
+// favorite.php 用のページネーション
+function favorite_pagination($max_page, $now_page)
+{
+  $pre_page = $now_page - 1;
+  $next_page = $now_page + 1;
+
+  echo '<div class="pager">
+  <ul class="pagination">
+      <li class="first"><a href="user_config.php?page_id=1"><span><i class="fas fa-angle-double-left"></i></span></a></li>';
+  if ($now_page == 1) {
+    echo '<li class="pre"><a class="disable" href="user_config.php?page_id=' .
+      $pre_page .
+      '"><span><i class="fas fa-angle-left"></i></span>
+    </a></li>';
+  } else {
+    echo '<li class="pre"><a href="user_config.php?page_id=' .
+      $pre_page .
+      '"><span><i class="fas fa-angle-left"></i></span>
+    </a></li>';
+  }
+
+  for ($i = 1; $i <= $max_page; $i++) {
+    // 最大ページ数分リンクを作成
+    if ($i == $now_page) {
+      // 現在表示中のページ数の場合はリンクを貼らない
+      echo '<li><a href="user_config.php?page_id=' .
+        $i .
+        '"><span>' .
+        $i .
+        "</span></a></li>  ";
+    } else {
+      echo '<li><a href="user_config.php?page_id=' .
+        $i .
+        '"><span>' .
+        $i .
+        "</span></a></li>  ";
+    }
+  }
+
+  if ($now_page == $max_page) {
+    echo '<li class="next"><a class="disable" href="user_config.php?page_id=' .
+      $next_page .
+      '"><span><i class="fas fa-angle-right"></i></span></a></li>';
+  } else {
+    echo '<li class="next"><a href="user_config.php?page_id=' .
+      $next_page .
+      '"><span><i class="fas fa-angle-right"></i></span></a></li>';
+  }
+
+  echo '<li class="last"><a href="user_config.php?page_id=' .
+    $max_page .
+    '"><span><i class="fas fa-angle-double-right"></i></span></a></li>
+  </ul>
+  </div>';
+}

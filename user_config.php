@@ -5,6 +5,9 @@
 ============================================= */
 
 include dirname(__FILE__) . "/assets/_inc/require.php";
+require_once dirname(__FILE__) . "/config/access_control.php";
+// ログインしていない場合、ログインフォームへ遷移
+access_control();
 
 // DB接続の準備
 $dbuser = new DBUsers();

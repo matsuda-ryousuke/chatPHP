@@ -14,8 +14,9 @@ html {
 }
 body {
   color: #333;
-  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium",
-    "游ゴシック", "Yu Gothic", sans-serif;
+  font-family: "ヒラギノ丸ゴ ProN", "游ゴシック体", YuGothic,
+    "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic",
+    sans-serif;
   font-size: 1.6rem;
   background: #ffffea;
 }
@@ -50,9 +51,29 @@ header
     }
   }
   &-logo {
-    width: 100px;
-    height: 50px;
-    background: #666;
+    width: 130px;
+    height: 60px;
+    background: #66665e;
+    display: flex;
+    justify-content: center;
+    div {
+      text-align: center;
+      color: #fff;
+    }
+    i {
+      font-size: 40px;
+      line-height: 42px;
+      transition: 0.3s;
+      margin: 0 auto;
+    }
+    p {
+      text-align: center;
+      font-size: 16px;
+    }
+  }
+
+  &-search-btn {
+    display: none;
   }
 
   &-list {
@@ -272,6 +293,9 @@ main {
   text-align: center;
   &-div {
     margin: 30px auto;
+    div {
+      margin-bottom: 15px;
+    }
   }
   &-ttl {
     font-size: 25px;

@@ -44,4 +44,15 @@ class DBUsers extends Database
     $stmt->bindValue(":pass", $pass, PDO::PARAM_STR);
     return $stmt->execute();
   }
+
+  // ユーザー名の変更
+  public function edit_user_name($user_name, $user_id)
+  {
+    $sql =
+      "UPDATE users set user_name = :user_name where user_id = :user_id";
+    $stmt = $this->dbh->prepare($sql);
+    $stmt->bindValue(":user_name", $user_name, PDO::PARAM_STR);
+    $stmt->bindValue(":user_id", $user_id, PDO::PARAM_INT);
+    return $stmt->execute();
+  }
 }
