@@ -8,4 +8,6 @@ require_once dirname(__FILE__) . "/../../database/DBusers.php";
 require_once dirname(__FILE__) . "/../../database/DBthreads.php";
 require_once dirname(__FILE__) . "/../../database/DBcomments.php";
 require_once dirname(__FILE__) . "/../../database/DBfavorites.php";
+require_once dirname(__FILE__) . "/../../database/DBLogin_fails.php";
+
 session_start();

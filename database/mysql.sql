@@ -58,3 +58,12 @@ insert into threads (title, user_id) values ("thread3", 1);
 insert into threads (title, user_id) values ("thread4", 2);
 insert into threads (title, user_id) values ("thread5", 2);
 insert into threads (title, user_id) values ("thread6", 2);
+
+
+# ログイン失敗
+create table if not exists login_fails (
+    user_id int,
+    ip varchar(20),
+    created_at datetime not null default CURRENT_TIMESTAMP
+);
+
