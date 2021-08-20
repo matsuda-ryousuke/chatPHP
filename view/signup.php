@@ -9,6 +9,11 @@ include dirname(__FILE__) . "/header.php"; ?>
 
     <h1>新規会員登録</h1>
     <form action="./process/register.php" method="post">
+        <input type="hidden" name="token" value="<?php echo htmlspecialchars(
+          $_SESSION["token"],
+          ENT_QUOTES,
+          "UTF-8"
+        ); ?>">
         <div>
             <input type="text" name="user_name" maxlength="<?php echo NAME_LENGTH; ?>" class="fa"
                 placeholder="&#xf007; ユーザー名" required>

@@ -71,5 +71,8 @@ try {
 
 $status = $_SESSION["status"];
 
+// csrf対策
+set_token();
+
 // view読み込み
 include dirname(__FILE__) . "/view/thread_content.php";

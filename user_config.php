@@ -5,7 +5,7 @@
 ============================================= */
 
 include dirname(__FILE__) . "/assets/_inc/require.php";
-require_once dirname(__FILE__) . "/config/access_control.php";
+require_once dirname(__FILE__) . "/function/access_control.php";
 // ログインしていない場合、ログインフォームへ遷移
 access_control();
 
@@ -40,6 +40,9 @@ try {
   $dbfavorite->dbh->rollBack();
   echo "失敗しました。" . $e->getMessage();
 }
+
+// csrf対策
+set_token();
 
 // view読み込み
 include dirname(__FILE__) . "/view/user_config.php"; ?>

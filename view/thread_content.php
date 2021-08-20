@@ -50,13 +50,18 @@
 <!-- コメント作成フォーム -->
 <section class="form">
     <form action="./process/comment_create.php" method="post" name="thread_form" class="comment-form">
+        <input type="hidden" name="token" value="<?php echo htmlspecialchars(
+          $_SESSION["token"],
+          ENT_QUOTES,
+          "UTF-8"
+        ); ?>">
         <div class="form-div">
             <?php if ($status == 1): ?>
             <div>
                 <div><input type="text" placeholder="名前" name="user_name" id="user_name"
                         maxlength="<?php echo NAME_LENGTH; ?>" value="<?php echo $_SESSION[
-                  "user_name"
-                ]; ?>"></div>
+  "user_name"
+]; ?>"></div>
             </div>
             <?php endif; ?>
 

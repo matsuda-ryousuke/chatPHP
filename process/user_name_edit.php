@@ -9,6 +9,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $user_id = $_SESSION["user_id"];
   $status = $_SESSION["status"];
 
+  // csrf対策
+  check_token();
+
   // user_name がPOSTされていない もしくは ログインをしていない場合、名前の入力文字数が制限を超える場合、エラー
   if (empty($_POST["user_name"]) || $status == 0) {
     $_SESSION["error"] = "エラーが発生しました。";

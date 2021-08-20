@@ -15,6 +15,9 @@ $pass = password_hash(
   PASSWORD_DEFAULT
 );
 
+// csrf対策
+check_token();
+
 // 各入力値のいずれかが空の場合、もしくはユーザー名の入力文字数が制限を超える場合、エラー
 if (empty($user_name) || empty($mail) || empty($pass)) {
   $_SESSION["error"] = "エラーが発生しました。";

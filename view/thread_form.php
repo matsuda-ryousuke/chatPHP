@@ -4,6 +4,11 @@
 
     <h1>スレッド作成</h1>
     <form action="process/thread_create.php" method="post">
+        <input type="hidden" name="token" value="<?php echo htmlspecialchars(
+          $_SESSION["token"],
+          ENT_QUOTES,
+          "UTF-8"
+        ); ?>">
         <div>
             <input type="text" placeholder="名前" name="user_name" id="user_name" maxlength="<?php echo NAME_LENGTH; ?>">
         </div>

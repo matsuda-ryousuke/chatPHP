@@ -15,6 +15,9 @@ if ($_POST["comment"]) {
   $comment = htmlspecialchars($_POST["comment"], ENT_QUOTES, "UTF-8");
   $thread_id = $_SESSION["thread_id"];
 
+  // csrf対策
+  check_token();
+
   // comment がPOSTされていない場合、もしくはタイトルの入力文字数が制限を超える場合、エラー
   if (empty($comment)) {
     $_SESSION["error"] = "エラーが発生しました。";

@@ -14,6 +14,11 @@ include dirname(__FILE__) . "/header.php"; ?>
     } ?>
 
     <form action="process/login.php" method="post">
+        <input type="hidden" name="token" value="<?php echo htmlspecialchars(
+          $_SESSION["token"],
+          ENT_QUOTES,
+          "UTF-8"
+        ); ?>">
         <div>
             <input type="text" name="mail" class="fa" placeholder="&#xf0e0; メールアドレス" required>
         </div>

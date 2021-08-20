@@ -7,6 +7,11 @@
             <p class="user-ttl">ユーザー名</p>
         </div>
         <form action="./process/user_name_edit.php" method="post" name="user_name_form">
+            <input type="hidden" name="token" value="<?php echo htmlspecialchars(
+              $_SESSION["token"],
+              ENT_QUOTES,
+              "UTF-8"
+            ); ?>">
             <div>
                 <input type="text" name="user_name" id="user_name" value="<?php echo $user_name; ?>" required
                     maxlength="<?php echo NAME_LENGTH; ?>">

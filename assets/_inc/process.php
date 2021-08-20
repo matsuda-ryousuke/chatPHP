@@ -2,7 +2,7 @@
 /*=============================================
   処理だけページ用インクルード
 ============================================= */
-require_once dirname(__FILE__) . "/../../config/function.php";
+require_once dirname(__FILE__) . "/../../function/function.php";
 require_once dirname(__FILE__) . "/../../database/database.php";
 require_once dirname(__FILE__) . "/../../database/DBusers.php";
 require_once dirname(__FILE__) . "/../../database/DBthreads.php";

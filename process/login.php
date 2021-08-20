@@ -13,6 +13,9 @@ $dblogin_fail = new DBLogin_fails();
 $mail = htmlspecialchars($_POST["mail"], ENT_QUOTES, "UTF-8");
 $pass = htmlspecialchars($_POST["pass"], ENT_QUOTES, "UTF-8");
 
+// csrf対策
+check_token();
+
 // DB処理
 try {
   $dbuser->dbh->beginTransaction();
