@@ -27,6 +27,13 @@ if ($_GET["search"] == null) {
 // 検索欄の入力値を取得
 $search = (string) htmlspecialchars($_GET["search"], ENT_QUOTES, "UTF-8");
 
+if (mb_strlen($search) > THREAD_TITLE_LENGTH) {
+  $_SESSION["error"] = "不正な入力値です。";
+  $uri = $_SERVER["HTTP_REFERER"];
+  header("Location: " . $uri);
+  exit();
+}
+
 // DB接続
 try {
   // トランザクション開始

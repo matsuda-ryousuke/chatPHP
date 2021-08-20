@@ -8,9 +8,10 @@ include dirname(__FILE__) . "/header.php"; ?>
 <section class="login">
 
     <h1>新規会員登録</h1>
-    <form action="register.php" method="post">
+    <form action="./process/register.php" method="post">
         <div>
-            <input type="text" name="user_name" class="fa" placeholder="&#xf007; ユーザー名" required>
+            <input type="text" name="user_name" maxlength="<?php echo NAME_LENGTH; ?>" class="fa"
+                placeholder="&#xf007; ユーザー名" required>
         </div>
         <div>
             <input type="text" name="mail" class="fa" placeholder="&#xf0e0; メールアドレス" required>

@@ -15,6 +15,18 @@ $pass = password_hash(
   PASSWORD_DEFAULT
 );
 
+// 各入力値のいずれかが空の場合、もしくはユーザー名の入力文字数が制限を超える場合、エラー
+if (empty($user_name) || empty($mail) || empty($pass)) {
+  $_SESSION["error"] = "エラーが発生しました。";
+  header("Location: ../index.php");
+  exit();
+} elseif (mb_strlen($user_name) > NAME_LENGTH) {
+  $_SESSION["error"] = "不正な入力値です。";
+  $uri = $_SERVER["HTTP_REFERER"];
+  header("Location: " . $uri);
+  exit();
+}
+
 // DB処理
 try {
   $dbuser->dbh->beginTransaction();

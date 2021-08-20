@@ -88,7 +88,7 @@ header
   height: 50px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
   .header-list {
     display: block;
   }
@@ -100,13 +100,13 @@ header
   line-height: 100%;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
   .header-list li {
     height: auto;
   }
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 901px) {
   .header-list li a {
     display: flex;
     align-items: center;
@@ -128,7 +128,7 @@ header
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
   .header-list li a {
     padding: 0 30px;
     color: #817676;
@@ -444,6 +444,10 @@ main {
   content: "\f086";
 }
 
+.submit-btn-user::after {
+  content: "\f007";
+}
+
 .submit-btn:hover {
   background: #0094c8;
   color: #fff;
@@ -469,6 +473,10 @@ main {
 
 .submit-btn-cancel:hover {
   background: #c73500;
+}
+
+.submit-btn-cancel-user::after {
+  content: "\f4fa";
 }
 
 .pager .pagination {
@@ -722,7 +730,7 @@ button.disabled {
   text-align: center;
 }
 
-@media screen and (max-width: 515px) {
+@media screen and (max-width: 768px) {
   .modal-text {
     margin: 15px;
     text-align: left;
@@ -751,7 +759,7 @@ button.disabled {
   /* 影（[右][下][ぼかし][影の色]）を指定する */
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
   .modal-icon-a {
     width: 100%;
   }
@@ -827,7 +835,7 @@ button.disabled {
   font-size: 3rem;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
   .loading p {
     font-size: 7vw;
   }
@@ -893,7 +901,7 @@ button.disabled {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
   /*============
 nav
 =============*/
@@ -958,7 +966,7 @@ nav
   }
   .nav-btns {
     display: flex;
-    justify-content: space-between;
+    justify-content: inherit;
     width: 240px;
   }
   .nav-text {
@@ -1011,6 +1019,38 @@ nav
   }
   .toggle_btn div i {
     font-size: 30px;
+  }
+  /*=============
+  モーダル
+  ===============*/
+  .modal-window {
+    padding: 2rem;
+  }
+  .modal-window .modal-btns {
+    display: block;
+    position: relative;
+    height: 100px;
+  }
+  .modal-window .modal-btns .submit-div {
+    position: absolute;
+    top: 0;
+  }
+  .modal-window .modal-btns .cancel-div {
+    position: absolute;
+    bottom: 0;
+  }
+  .form-window div {
+    width: 100%;
+  }
+  /*=============
+  入力フォーム
+  ===============*/
+  .login {
+    width: 95%;
+    padding: 15px;
+  }
+  .login input {
+    width: 80%;
   }
 }
 /*# sourceMappingURL=style.css.map */

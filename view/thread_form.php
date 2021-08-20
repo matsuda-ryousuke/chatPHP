@@ -5,10 +5,11 @@
     <h1>スレッド作成</h1>
     <form action="process/thread_create.php" method="post">
         <div>
-            <input type="text" placeholder="名前" name="user_name" id="user_name">
+            <input type="text" placeholder="名前" name="user_name" id="user_name" maxlength="<?php echo NAME_LENGTH; ?>">
         </div>
         <div>
-            <input type="text" placeholder="タイトル" name="title" id="title" required>
+            <input type="text" placeholder="タイトル" name="title" id="title" required
+                maxlength="<?php echo THREAD_TITLE_LENGTH; ?>">
         </div>
 
         <!-- モーダル表示用ボタン -->
@@ -35,12 +36,12 @@
             </div>
 
             <div class="modal-btns">
-                <div>
+                <div class="cancel-div">
                     <button type="button" class="reset submit-btn submit-btn-cancel js-modal-close" id="close">
                         キャンセル
                     </button>
                 </div>
-                <div>
+                <div class="submit-div">
                     <button type="submit" name="submit" class="reset submit-btn submit-btn-comment js-modal-open-form"
                         id="submit-btn">スレッド作成</button>
                 </div>

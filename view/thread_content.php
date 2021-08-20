@@ -4,12 +4,18 @@
 <div class="comment-thread" data-id="<?php echo $thread_id; ?>">
     <div>
         <p class="comment-thread-p"><span class="comment-thread-title"><?php echo $title; ?>
-
-            </span><span><span class="comment-thread-favo <?php if (
-              $favorite_flag
-            ): ?>active<?php endif; ?>" data-id="<?php echo $thread_id; ?>">
-                    <i class="fas fa-star"></i></span>[<?php echo $user_name; ?>]
-                (<?php echo $comment_count; ?>コメント)</span></p>
+            </span>
+            <span>
+                <?php if ($status == 1): ?>
+                <span class="comment-thread-favo <?php if (
+                  $favorite_flag
+                ): ?>active<?php endif; ?>" data-id="<?php echo $thread_id; ?>">
+                    <i class="fas fa-star"></i></span>
+                <?php endif; ?>
+                [<?php echo $user_name; ?>]
+                (<?php echo $comment_count; ?>コメント)
+            </span>
+        </p>
     </div>
 </div>
 
@@ -47,15 +53,16 @@
         <div class="form-div">
             <?php if ($status == 1): ?>
             <div>
-                <div><input type="text" placeholder="名前" name="user_name" id="user_name" value="<?php echo $_SESSION[
+                <div><input type="text" placeholder="名前" name="user_name" id="user_name"
+                        maxlength="<?php echo NAME_LENGTH; ?>" value="<?php echo $_SESSION[
                   "user_name"
                 ]; ?>"></div>
             </div>
             <?php endif; ?>
 
             <div class="comment-textarea">
-                <textarea placeholder="コメント" name="comment" id="comment" rows="8" cols="40" maxlength="255"
-                    required></textarea>
+                <textarea placeholder="コメント" name="comment" id="comment" rows="8" cols="40"
+                    maxlength="<?php echo COMMENT_LENGTH; ?>" required></textarea>
             </div>
 
             <!-- モーダル表示ボタン -->
@@ -81,12 +88,12 @@
                 <p class="modal-form-item" id="form_comment"></p>
             </div>
             <div class="modal-btns">
-                <div>
+                <div class="cancel-div">
                     <button type="button" class="reset submit-btn submit-btn-cancel js-modal-close" id="close">
                         キャンセル
                     </button>
                 </div>
-                <div>
+                <div class="submit-div">
                     <button type="submit" name="submit" class="reset submit-btn submit-btn-comment js-modal-open-form"
                         id="submit-btn">コメント投稿</button>
                 </div>

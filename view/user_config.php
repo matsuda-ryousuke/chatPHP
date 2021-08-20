@@ -8,10 +8,11 @@
         </div>
         <form action="./process/user_name_edit.php" method="post" name="user_name_form">
             <div>
-                <input type="text" name="user_name" id="user_name" value="<?php echo $user_name; ?>" required>
+                <input type="text" name="user_name" id="user_name" value="<?php echo $user_name; ?>" required
+                    maxlength="<?php echo NAME_LENGTH; ?>">
             </div>
             <!-- モーダル表示ボタン -->
-            <button type="button" class="reset submit-btn submit-btn-comment js-modal-open" id="form_user_name_btn"
+            <button type="button" class="reset submit-btn submit-btn-user js-modal-open" id="form_user_name_btn"
                 data-id="form">変更</button>
 
             <!-- ↓モーダル↓ -->
@@ -31,15 +32,15 @@
                     <p class="modal-form-item" id="form_user_name"></p>
                 </div>
                 <div class="modal-btns">
-                    <div>
-                        <button type="button" class="reset submit-btn submit-btn-cancel js-modal-close" id="close">
+                    <div class="cancel-div">
+                        <button type="button"
+                            class="reset submit-btn submit-btn-cancel submit-btn-cancel-user js-modal-close" id="close">
                             キャンセル
                         </button>
                     </div>
-                    <div>
-                        <button type="submit" name="submit"
-                            class="reset submit-btn submit-btn-comment js-modal-open-form"
-                            id="submit-btn">コメント投稿</button>
+                    <div class="submit-div">
+                        <button type="submit" name="submit" class="reset submit-btn submit-btn-user js-modal-open-form"
+                            id="submit-btn">名前の変更</button>
                     </div>
                 </div>
             </div>

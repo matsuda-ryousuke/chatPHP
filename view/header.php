@@ -28,7 +28,8 @@
                 <div class="header-infos">
 
                     <form action="./search.php" method="get">
-                        <input type="text" name="search" id="search" class="fa" placeholder="&#xf002; 検索内容を入力">
+                        <input type="text" name="search" id="search" maxlength="<?php echo THREAD_TITLE_LENGTH; ?>"
+                            class="fa" placeholder="&#xf002; 検索内容を入力">
                         <button type="submit" class="header-search-btn"></button>
                     </form>
 

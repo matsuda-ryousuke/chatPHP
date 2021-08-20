@@ -9,10 +9,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $user_id = $_SESSION["user_id"];
   $status = $_SESSION["status"];
 
-  // user_name がPOSTされていない もしくは ログインをしていない場合、エラー
+  // user_name がPOSTされていない もしくは ログインをしていない場合、名前の入力文字数が制限を超える場合、エラー
   if (empty($_POST["user_name"]) || $status == 0) {
     $_SESSION["error"] = "エラーが発生しました。";
-    header("Location: ../index.php");
+    $uri = $_SERVER["HTTP_REFERER"];
+    header("Location: " . $uri);
+    exit();
+  } elseif (mb_strlen($_POST["user_name"]) > NAME_LENGTH) {
+    $_SESSION["error"] = "不正な入力値です。";
+    $uri = $_SERVER["HTTP_REFERER"];
+    header("Location: " . $uri);
     exit();
   }
 

@@ -15,6 +15,19 @@ if ($_POST["comment"]) {
   $comment = htmlspecialchars($_POST["comment"], ENT_QUOTES, "UTF-8");
   $thread_id = $_SESSION["thread_id"];
 
+  // comment がPOSTされていない場合、もしくはタイトルの入力文字数が制限を超える場合、エラー
+  if (empty($comment)) {
+    $_SESSION["error"] = "エラーが発生しました。";
+    $uri = $_SERVER["HTTP_REFERER"];
+    header("Location: " . $uri);
+    exit();
+  } elseif (mb_strlen($comment) > COMMENT_LENGTH) {
+    $_SESSION["error"] = "不正な入力値です。";
+    $uri = $_SERVER["HTTP_REFERER"];
+    header("Location: " . $uri);
+    exit();
+  }
+
   // セッションから、ユーザー情報を取得
   $user_id = $_SESSION["user_id"];
   $status = $_SESSION["status"];
@@ -32,7 +45,14 @@ if ($_POST["comment"]) {
 
     // スレッドのコメント数を取得し、+1 の値を新規コメントのIDとする
     $comment_id = $dbthread->get_count_comment($thread_id) + 1;
-    var_dump($comment_id);
+
+    // スレッドのコメント数が1000件を越えていれば、書き込みを禁止
+    if ($comment_id > 1000) {
+      $_SESSION["error"] = "このスレッドは書き込み1000件を越えています";
+      $uri = $_SERVER["HTTP_REFERER"];
+      header("Location: " . $uri);
+      die();
+    }
 
     // commentsテーブルにデータを登録
     $dbcomment->post_comment(

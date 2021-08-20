@@ -10,8 +10,8 @@ include dirname(__FILE__) . "/header.php"; ?>
 <section class="login">
     <h1>ログインページ</h1>
     <?php if (isset($error)) {
-  echo $error;
-} ?>
+      echo $error;
+    } ?>
 
     <form action="process/login.php" method="post">
         <div>
