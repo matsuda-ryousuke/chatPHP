@@ -8,7 +8,7 @@ require_once dirname(__FILE__) . "/../../database/DBcomments.php";
 require_once dirname(__FILE__) . "/../../database/DBfavorites.php";
 
 session_start();
-var_dump($_SESSION);
+// var_dump($_SESSION);
 
 // セッションIDが全て付与されていない場合、guest_id を付与
 if (!isset($_SESSION["login_id"]) && !isset($_SESSION["guest_id"])) {

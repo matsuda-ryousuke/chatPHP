@@ -5,8 +5,7 @@
 
 include dirname(__FILE__) . "/../assets/_inc/process.php";
 
-    header('Content-type: text/plain; charset= UTF-8');
-
+header("Content-type: text/plain; charset= UTF-8");
 
 // POSTアクセス時のみ処理
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -15,6 +14,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // user_idをセッションから取得、thread_id はajaxでPOSTで送られる
   $user_id = $_SESSION["user_id"];
   $thread_id = $_POST["thread_id"];
+  $status = $_SESSION["status"];
+  // もしもログインしていない状態で送られてしまった場合、インデックスにリダイレクト
+  if ($status == 0) {
+    $_SESSION["error"] = "エラーが発生しました。";
+    header("Location: ../index.php");
+    exit();
+  }
 
   // DB処理
   try {

@@ -10,6 +10,7 @@ $dbthread = new DBThreads();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // POSTアクセス時、スレッド作成
   $title = htmlspecialchars($_POST["title"], ENT_QUOTES, "UTF-8");
+  $status = $_SESSION["status"];
 
   // title がPOSTされていない もしくは ログインをしていない場合、エラー
   if (empty($title) || $status == 0) {
