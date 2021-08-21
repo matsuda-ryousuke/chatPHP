@@ -9,6 +9,7 @@ function set_token()
   }
 }
 
+// トークンのチェック
 function check_token()
 {
   if (
