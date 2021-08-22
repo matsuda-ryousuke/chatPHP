@@ -4,8 +4,8 @@
 ini_set("display_errors", 1);
 
 // DB登録用
-// define("DSN", "mysql:host=10.0.20.205;dbname=chatPHP;charset=utf8");
-define("DSN", "mysql:host=localhost;dbname=chatPHP;charset=utf8");
+define("DSN", "mysql:host=10.0.20.205;dbname=chatPHP;charset=utf8");
+// define("DSN", "mysql:host=localhost;dbname=chatPHP;charset=utf8");
 
 define("DB_USER", "mysql-user");
 define("DB_PASS", "4308Pillows");
