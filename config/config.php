@@ -4,9 +4,9 @@
 ini_set("display_errors", 1);
 
 // DB登録用
-define("DSN", "mysql:host=localhost;dbname=chatPHP;charset=utf8");
+define("DSN", "mysql:host=10.0.20.205;dbname=chatPHP;charset=utf8");
 define("DB_USER", "mysql-user");
-define("DB_PASS", "4308Pillows");
+define("DB_PASS", '8QLQ"u>P>S89');
 
 // ページネーションで表示する要素数
 define("THREAD_MAX", 5);
