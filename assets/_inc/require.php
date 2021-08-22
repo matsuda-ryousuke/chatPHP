@@ -6,7 +6,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/chatPHP/database/DBusers.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/chatPHP/database/DBthreads.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/chatPHP/database/DBcomments.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/chatPHP/database/DBfavorites.php";
-require_once $_SERVER["DOCUMENT_ROOT"] . "/chatPHP/database/DBLogin_fails.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/chatPHP/database/DBlogin_fails.php";
 
 session_start();
 // var_dump($_SESSION);
