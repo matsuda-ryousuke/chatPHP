@@ -4,7 +4,7 @@
   検索結果の表示ページ
 ============================================= */
 
-include dirname(__FILE__) . "/assets/_inc/require.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/chatPHP/assets/_inc/require.php";
 
 // DB接続の準備
 $dbuser = new DBUsers();

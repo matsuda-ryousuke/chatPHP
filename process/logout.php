@@ -4,7 +4,7 @@
   ログアウト処理用のページ
 ============================================= */
 
-require_once dirname(__FILE__) . "/../assets/_inc/process.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/chatPHP/assets/_inc/process.php";
 //セッションの中身をすべて削除
 $_SESSION = [];
 //セッションを破壊

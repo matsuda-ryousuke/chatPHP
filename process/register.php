@@ -3,7 +3,7 @@
   会員登録処理用のページ
   処理が終われば別ページへリダイレクト
 ============================================= */
-include dirname(__FILE__) . "/../assets/_inc/process.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/chatPHP/assets/_inc/process.php";
 
 $dbuser = new DBUsers();
 

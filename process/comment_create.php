@@ -4,7 +4,7 @@
   処理が終わればリダイレクト
 ============================================= */
 
-include dirname(__FILE__) . "/../assets/_inc/process.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/chatPHP/assets/_inc/process.php";
 
 if ($_POST["comment"]) {
   // POSTでコメントが送られている：コメント登録

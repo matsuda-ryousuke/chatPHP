@@ -3,7 +3,7 @@
   スレッド作成ページ
 ============================================= */
 
-include dirname(__FILE__) . "/../assets/_inc/process.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/chatPHP/assets/_inc/process.php";
 
 $dbthread = new DBThreads();
 

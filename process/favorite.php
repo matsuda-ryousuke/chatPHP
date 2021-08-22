@@ -3,7 +3,7 @@
   お気に入りを登録するためのPHP,ajax専用
 ===========================================*/
 
-include dirname(__FILE__) . "/../assets/_inc/process.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/chatPHP/assets/_inc/process.php";
 
 header("Content-type: text/plain; charset= UTF-8");
 

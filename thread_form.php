@@ -5,8 +5,8 @@
   ログインしていることが必須
 ============================================= */
 
-include dirname(__FILE__) . "/assets/_inc/require.php";
-require_once dirname(__FILE__) . "/function/access_control.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/chatPHP/assets/_inc/require.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/chatPHP/function/access_control.php";
 // ログインしていない場合、ログインフォームへ遷移
 access_control();
 

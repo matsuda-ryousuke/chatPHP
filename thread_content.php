@@ -5,7 +5,7 @@
   コメント一覧や、コメント入力フォームを表示
 ============================================= */
 
-include dirname(__FILE__) . "/assets/_inc/require.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/chatPHP/assets/_inc/require.php";
 
 $dbuser = new DBUsers();
 $dbthread = new DBThreads();
