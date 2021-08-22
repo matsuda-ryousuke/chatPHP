@@ -21,7 +21,6 @@
                 data-id="form">変更</button>
 
             <!-- ↓モーダル↓ -->
-            <div id="overlay" class="overlay"></div>
             <div class="form-window modal-window" data-id="modal-form">
                 <p class="modal-secttl">ユーザー名変更</p>
                 <div>

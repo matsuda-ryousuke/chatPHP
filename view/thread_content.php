@@ -77,7 +77,6 @@
 
 
         <!-- ↓モーダル↓ -->
-        <div id="overlay" class="overlay"></div>
         <div class="form-window modal-window" data-id="modal-form">
             <p class="modal-secttl">コメント投稿</p>
             <div>

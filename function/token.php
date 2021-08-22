@@ -14,6 +14,7 @@ function check_token()
 {
   if (
     empty($_POST["token"]) ||
+    empty($_SESSION["token"]) ||
     htmlspecialchars($_POST["token"]) != $_SESSION["token"]
   ) {
     $_SESSION["error"] = "不正な処理が行われました。";

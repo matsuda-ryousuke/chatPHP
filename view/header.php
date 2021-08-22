@@ -38,8 +38,36 @@
 
                     <a href="./user_config.php" class="a-btn"><span class="a-btn-icon"><i
                                 class="fas fa-user-cog"></i></span><span class="a-btn-text">ユーザー設定</span></a>
-                    <a href="./process/logout.php" class="a-btn"><span class="a-btn-icon"><i
-                                class="fas fa-sign-out-alt"></i></span><span class="a-btn-text">ログアウト</span></a>
+                    <a href="./process/logout.php" class="a-btn js-modal-open a-logout" id="" data-id="logout"><span
+                            class="a-btn-icon"><i class="fas fa-sign-out-alt"></i></span><span
+                            class="a-btn-text">ログアウト</span></a>
+                    <!-- ↓モーダル↓ -->
+                    <div id="overlay" class="overlay"></div>
+                    <div class="form-window modal-window" data-id="modal-logout">
+                        <p class="modal-secttl">ログアウトしますか？</p>
+
+                        <form action="./process/logout.php" method="post">
+
+                            <div class="modal-btns">
+
+                                <div class="cancel-div">
+                                    <button type="button"
+                                        class="reset submit-btn submit-btn-cancel submit-btn-cancel-user js-modal-close"
+                                        id="close">
+                                        キャンセル
+                                    </button>
+                                </div>
+                                <div class="submit-div">
+                                    <button type="submit" name="submit"
+                                        class="reset submit-btn submit-btn-user js-modal-open-form"
+                                        id="submit-btn">ログアウト</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                    <!-- ↑モーダル↑ -->
+
 
                     <?php else: ?>
                     <a href="./login_form.php" class="a-btn"><span class="a-btn-icon"><i

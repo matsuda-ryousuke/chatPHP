@@ -7,6 +7,7 @@ $(function () {
 
   // モーダルオープン用ボタンのクリック時
   $(".js-modal-open").click(function () {
+    console.log("ttttt");
     // スレッド作成フォームのボタンクリック時
     if ($(this).attr("id") == "form_thread_btn") {
       // submitせずに、バリデーションチェック
@@ -37,7 +38,7 @@ $(function () {
     }
 
     // コメント投稿フォームのボタンクリック時（挙動はスレッド作成時とほぼ同じ）
-    if ($(this).attr("id") == "form_comment_btn") {
+    else if ($(this).attr("id") == "form_comment_btn") {
       if ($(this).parents("form").get(0).reportValidity()) {
         var form_user_name = $("#form_user_name");
         var form_comment = $("#form_comment");
@@ -56,7 +57,7 @@ $(function () {
     }
 
     // ユーザー名変更フォームのボタンクリック時（挙動はスレッド作成時とほぼ同じ）
-    if ($(this).attr("id") == "form_user_name_btn") {
+    else if ($(this).attr("id") == "form_user_name_btn") {
       if ($(this).parents("form").get(0).reportValidity()) {
         console.log($(this).parents("form").get(0).reportValidity());
         var form_user_name = $("#form_user_name");
@@ -69,6 +70,13 @@ $(function () {
         $("#overlay, .modal-window[data-id='modal-" + id + "']").fadeIn();
       }
     }
+
+    // ユーザー名変更フォームのボタンクリック時（挙動はスレッド作成時とほぼ同じ）
+    else {
+      $("body").addClass("no_scroll").css({ top: -scrollPos });
+      var id = $(this).data("id");
+      $("#overlay, .modal-window[data-id='modal-" + id + "']").fadeIn();
+    }
   });
 
   // モーダル閉じるボタン、もしくはオーバーレイのクリック時にモーダルをフェードアウト
@@ -76,6 +84,12 @@ $(function () {
     $("body").removeClass("no_scroll");
     $(window).scrollTop(scrollPos);
     $("#overlay, .modal-window").fadeOut();
+  });
+
+  // ログアウトボタンクリック時には遷移せずにモーダル表示
+  $(".a-logout").click(function (e) {
+    console.log(e);
+    e.preventDefault();
   });
 
   /*======================================================
