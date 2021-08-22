@@ -38,7 +38,7 @@
 
                     <a href="./user_config.php" class="a-btn"><span class="a-btn-icon"><i
                                 class="fas fa-user-cog"></i></span><span class="a-btn-text">ユーザー設定</span></a>
-                    <a href="./process/logout.php" class="a-btn js-modal-open a-logout" id="" data-id="logout"><span
+                    <a href="./process/logout.php" class="a-btn js-modal-open a-logout" data-id="logout"><span
                             class="a-btn-icon"><i class="fas fa-sign-out-alt"></i></span><span
                             class="a-btn-text">ログアウト</span></a>
                     <!-- ↓モーダル↓ -->
@@ -100,12 +100,14 @@
                         </div>
                     </a>
 
-                    <a href="./process/logout.php">
+                    <a href="./process/logout.php" class="js-modal-open a-logout" data-id="logout">
                         <div class="nav-box">
                             <i class="fas fa-sign-out-alt"></i>
                             <div class="nav-text">ログアウト</div>
                         </div>
                     </a>
+
+
                     <?php else: ?>
 
                     <a href="./login_form.php">
