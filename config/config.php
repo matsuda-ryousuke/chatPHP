@@ -8,7 +8,8 @@ define("DSN", "mysql:host=10.0.20.205;dbname=chatPHP;charset=utf8");
 // define("DSN", "mysql:host=localhost;dbname=chatPHP;charset=utf8");
 
 define("DB_USER", "mysql-user");
-define("DB_PASS", "4308Pillows");
+define("DB_PASS", '8QLQ"u>P>S89');
+// define("DB_PASS", "4308Pillows");
 
 // ページネーションで表示する要素数
 define("THREAD_MAX", 5);
