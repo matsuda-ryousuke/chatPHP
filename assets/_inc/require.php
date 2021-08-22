@@ -1,12 +1,12 @@
 <?php
 
-require_once "/function/function.php";
-require_once "/database/database.php";
-require_once "/database/DBusers.php";
-require_once "/database/DBthreads.php";
-require_once "/database/DBcomments.php";
-require_once "/database/DBfavorites.php";
-require_once "/database/DBLogin_fails.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/chatPHP/function/function.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/chatPHP/database/database.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/chatPHP/database/DBusers.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/chatPHP/database/DBthreads.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/chatPHP/database/DBcomments.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/chatPHP/database/DBfavorites.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/chatPHP/database/DBLogin_fails.php";
 
 session_start();
 // var_dump($_SESSION);
