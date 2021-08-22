@@ -33,6 +33,9 @@
                         <button type="submit" class="header-search-btn"></button>
                     </form>
 
+                    <!-- オーバーレイ -->
+                    <div id="overlay" class="overlay"></div>
+
                     <?php if (isset($_SESSION["login_id"])): ?>
 
 
@@ -42,7 +45,6 @@
                             class="a-btn-icon"><i class="fas fa-sign-out-alt"></i></span><span
                             class="a-btn-text">ログアウト</span></a>
                     <!-- ↓モーダル↓ -->
-                    <div id="overlay" class="overlay"></div>
                     <div class="form-window modal-window" data-id="modal-logout">
                         <p class="modal-secttl">ログアウトしますか？</p>
 
