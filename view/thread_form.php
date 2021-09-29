@@ -17,13 +17,13 @@
                 maxlength="<?php echo THREAD_TITLE_LENGTH; ?>">
         </div>
 
-        <!-- モーダル表示用ボタン -->
+        <?php /* モーダル表示用ボタン */ ?>
         <button type="button" class="js-modal-open reset submit-btn submit-btn-thread" id="form_thread_btn"
             data-id="form">
             送信
         </button>
 
-        <!-- ↓モーダル↓ -->
+        <?php /* モーダルここから */ ?>
         <div class="form-window modal-window" data-id="modal-form">
             <p class="modal-secttl">スレッド作成</p>
             <div>
@@ -51,7 +51,7 @@
                 </div>
             </div>
         </div>
-        <!-- ↑モーダル↑ -->
+        <?php /* モーダルここまで */ ?>
     </form>
 
 

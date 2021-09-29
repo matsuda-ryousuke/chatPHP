@@ -17,7 +17,7 @@
 
     <ul class="thread-ul">
 
-        <!-- thread一覧の表示 -->
+        <?php /* スレッド一覧の表示 */ ?>
         <?php foreach ($stmt as $row): ?>
         <li>
             <a href="thread_content.php?id=<?php echo $row[

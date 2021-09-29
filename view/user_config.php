@@ -16,11 +16,11 @@
                 <input type="text" name="user_name" id="user_name" value="<?php echo $user_name; ?>" required
                     maxlength="<?php echo NAME_LENGTH; ?>">
             </div>
-            <!-- モーダル表示ボタン -->
+            <?php /* モーダル表示ボタン */ ?>
             <button type="button" class="reset submit-btn submit-btn-user js-modal-open" id="form_user_name_btn"
                 data-id="form">変更</button>
 
-            <!-- ↓モーダル↓ -->
+            <?php /* モーダルここから */ ?>
             <div class="form-window modal-window" data-id="modal-form">
                 <p class="modal-secttl">ユーザー名変更</p>
                 <div>
@@ -48,7 +48,7 @@
                     </div>
                 </div>
             </div>
-            <!-- ↑モーダル↑ -->
+            <?php /* モーダルここまで */ ?>
         </form>
     </div>
 

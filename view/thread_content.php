@@ -1,6 +1,6 @@
 <?php include dirname(__FILE__) . "/header.php"; ?>
 
-<!-- threadの表示 -->
+<?php /* スレッドの表示 */ ?>
 <div class="comment-thread" data-id="<?php echo $thread_id; ?>">
     <div>
         <p class="comment-thread-p"><span class="comment-thread-title"><?php echo $title; ?>
@@ -20,7 +20,7 @@
 </div>
 
 
-<!-- comment一覧の表示 -->
+<?php /* コメント一覧の表示 */ ?>
 <?php foreach ($stmt as $row): ?>
 <div class="comment" data-id="<?php echo $comment_id; ?>">
     <div class="comment-nav">
@@ -43,11 +43,11 @@
 </div>
 <?php endforeach; ?>
 
-<!-- ページネーション表示 -->
+<?php /* ページネーション表示 */ ?>
 <?php comment_pagination($arr["max_page"], $arr["now_page"], $thread_id); ?>
 
 
-<!-- コメント作成フォーム -->
+<?php /* コメント作成フォーム */ ?>
 <section class="form">
     <form action="./process/comment_create.php" method="post" name="thread_form" class="comment-form">
         <input type="hidden" name="token" value="<?php echo htmlspecialchars(
@@ -70,13 +70,13 @@
                     maxlength="<?php echo COMMENT_LENGTH; ?>" required></textarea>
             </div>
 
-            <!-- モーダル表示ボタン -->
+            <?php /* モーダル表示ボタン */ ?>
             <button type="button" class="reset submit-btn submit-btn-comment js-modal-open" id="form_comment_btn"
                 data-id="form">送信</button>
         </div>
 
 
-        <!-- ↓モーダル↓ -->
+        <?php /* モーダルここから */ ?>
         <div class="form-window modal-window" data-id="modal-form">
             <p class="modal-secttl">コメント投稿</p>
             <div>
@@ -103,7 +103,7 @@
                 </div>
             </div>
         </div>
-        <!-- ↑モーダル↑ -->
+        <?php /* モーダルここまで */ ?>
     </form>
 
 

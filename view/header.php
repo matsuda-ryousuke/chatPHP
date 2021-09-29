@@ -33,7 +33,7 @@
                         <button type="submit" class="header-search-btn"></button>
                     </form>
 
-                    <!-- オーバーレイ -->
+                    <?php /* オーバーレイ */ ?>
                     <div id="overlay" class="overlay"></div>
 
                     <?php if (isset($_SESSION["login_id"])): ?>
@@ -44,7 +44,9 @@
                     <a href="./process/logout.php" class="a-btn js-modal-open a-logout" data-id="logout"><span
                             class="a-btn-icon"><i class="fas fa-sign-out-alt"></i></span><span
                             class="a-btn-text">ログアウト</span></a>
-                    <!-- ↓モーダル↓ -->
+
+
+                    <?php /* ここからモーダル */ ?>
                     <div class="form-window modal-window" data-id="modal-logout">
                         <p class="modal-secttl">ログアウトしますか？</p>
 
@@ -68,7 +70,7 @@
                         </form>
 
                     </div>
-                    <!-- ↑モーダル↑ -->
+                    <?php /* モーダルここまで */ ?>
 
 
                     <?php else: ?>
@@ -84,7 +86,7 @@
                         <i class="fas fa-search"></i>
                         <div class="nav-text">検索</div>
                     </div>
-                    <!-- スマホ用の検索フォーム -->
+                    <?php /* スマホ用の検索フォーム */ ?>
                     <div class="header-under">
                         <form action="./search.php" method="get">
                             <input type="text" name="search" id="search-responsive" class="fa"
